@@ -2,9 +2,23 @@
 
 @section('content')
     <div class="body">1</div>
-
-    <div class="map" style="width: 600px; height: 400px; background: rgb(225, 225, 225);">
-        <div class="chel" data-id="1" data-name="AAA" data-money="10" style="width: 20px; height: 20px; border: 1px solid blue;"></div>
+    <?$arrayChel = [
+        array( 'name'=> 'ААА', 'money' => '10' ),
+        array( 'name'=> 'ААБ', 'money' => '10' ),
+        array( 'name'=> 'ААВ', 'money' => '10' ),
+        array( 'name'=> 'ААГ', 'money' => '10' ),
+        array( 'name'=> 'ААД', 'money' => '10' ),
+        array( 'name'=> 'ААЕ', 'money' => '10' ),
+    ];?>
+<!--    --><?//dd($arrayChel);?>
+    <div class="map" <?$ChelId = 0;?>>
+        @foreach($arrayChel as $Chel)
+            <div class="chel"
+                 data-id="<?=$ChelId++;?>"
+                 data-name="<?=$Chel['name']?>"
+                 data-money="<?=$Chel['money']?>"
+                 data-food="" ><?=$Chel['name']?></div>
+        @endforeach
     </div>
 
     <div class="calendar" data-countDay="1">
@@ -13,5 +27,6 @@
         <div id="year">1</div>
         <div id="nextDay">>></div>
     </div>
+
 
 @endsection
