@@ -1,7 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="body">1</div>
+
+    <?use App\Calendar;?>
+    <?use Illuminate\Database\Eloquent\Model;?>
+    <?use Illuminate\Http\Request;?>
+
+<?
+
+    ?>
+
+
+<?//dd($calendar)?>
     <?$arrayChel = [
         array( 'name'=> 'ААА', 'money' => '10' ),
         array( 'name'=> 'ААБ', 'money' => '10' ),
@@ -27,6 +37,7 @@
         <div id="year">1</div>
         <div id="nextDay">>></div>
     </div>
+
 
 
 @endsection

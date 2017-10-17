@@ -9,11 +9,11 @@ $(document).ready(function(){
     });
     $('.chel').mouseenter(function () {
         var $chelData = $('.chel').data();
-        console.log('$chelData', $chelData);
+        // console.log('$chelData', $chelData);
         // var id = $chel.attr('data-id'),
         //     name = $chel.attr('data-name'),
         //     money = $chel.attr('data-money');
-       console.log('id', $chelData.id, 'name: ', name, 'money: ', money);
+       // console.log('id', $chelData.id);
     });
 
     var $map = $('.map');
@@ -40,6 +40,17 @@ function calendar() {
     $('#day').text(day);
     $('#month').text(month);
     $('#year').text(year);
+    $.get(
+        '/public/ajax/calendar.php', {
+            count: count
+        }, function () {
+            console.log('vjpolnilo');
+        }, 'json'
+    );
+}
+
+function buyFood() {
+    
 }
 
 function eatFood() {
