@@ -1,10 +1,6 @@
 <?php
-//require_once '/app/Calendar.php';
-namespace App;
+require_once "/app/";
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\Request;
-use App\Calendar;
 
 
 $calendar = new Calendar();

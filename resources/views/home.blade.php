@@ -15,7 +15,7 @@
 
     <?$testChel = array();?>
     <?for($count=0; $count<= 10000; $count++){
-        $testChel[] = array('name'=> $count, 'money'=> '10');
+//        $testChel[] = array('name'=> $count, 'money'=> '10');
     }?>
 
 
