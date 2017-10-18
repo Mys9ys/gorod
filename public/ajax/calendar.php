@@ -1,10 +1,11 @@
 <?php
-require_once '/app/Calendar.php';
-//namespace App;
+//require_once '/app/Calendar.php';
+namespace App;
 
-//use App\Calendar;
-//use Illuminate\Database\Eloquent\Model;
-//use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
+use App\Calendar;
+
 
 $calendar = new Calendar();
 $calendar->countday = 7;

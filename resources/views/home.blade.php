@@ -12,6 +12,14 @@
 
 
 <?//dd($calendar)?>
+
+    <?$testChel = array();?>
+    <?for($count=0; $count<= 10000; $count++){
+        $testChel[] = array('name'=> $count, 'money'=> '10');
+    }?>
+
+
+<!--            --><?//dd($testChel);?>
     <?$arrayChel = [
         array( 'name'=> 'ААА', 'money' => '10' ),
         array( 'name'=> 'ААБ', 'money' => '10' ),
@@ -22,7 +30,7 @@
     ];?>
 <!--    --><?//dd($arrayChel);?>
     <div class="map" <?$ChelId = 0;?>>
-        @foreach($arrayChel as $Chel)
+        @foreach($testChel as $Chel)
             <div class="chel"
                  data-id="<?=$ChelId++;?>"
                  data-name="<?=$Chel['name']?>"
