@@ -41,7 +41,7 @@ function calendar() {
     $('#month').text(month);
     $('#year').text(year);
     $.get(
-        '/public/ajax/calendar.php', {
+        '/app/Ajax/calendar.php', {
             count: count
         }, function () {
             console.log('vjpolnilo');
