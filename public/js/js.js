@@ -1,6 +1,12 @@
 /**
  * Created by Мусяус on 22.08.2017.
  */
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
 $(document).ready(function(){
 
     $('.calendar').click(function () {
@@ -27,6 +33,15 @@ $(document).ready(function(){
         console.log('name',$(this).data('name'),'chelX', chelX, 'chelH', chelY);
         $(this).offset({top:chelY,left:chelX})
     });
+    
+    $('.reset').click(function () {
+        $.post({
+            url: '/reset',
+            success: function(result){
+                location.reload();
+            }
+        });
+    });
 });
 
 function calendar() {
@@ -40,13 +55,25 @@ function calendar() {
     $('#day').text(day);
     $('#month').text(month);
     $('#year').text(year);
-    $.get(
-        '/public/ajax/calendar.php', {
-            count: count
-        }, function () {
-            console.log('vjpolnilo');
-        }, 'json'
-    );
+    $.post({
+        url: '/ajaxRequest',
+        data: { count: count },
+        success: function(result){
+            console.log(result);
+        }
+    });
+
+
+
+
+    // $.ajax({
+    //     type: 'POST',
+    //     url: '/ajaxRequest',
+    //     data: { count: count },
+    //     success: function(result){
+    //         console.log(result);
+    //     }
+    // });
 }
 
 function buyFood() {

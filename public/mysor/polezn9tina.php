@@ -7,6 +7,11 @@ $finish = microtime(true);
 $delta = $finish - $start;
 echo $delta . ' сек.';
 
+
+//    $text = json_encode($testChel);
+//    $fp = fopen("file.txt", "w" );
+//    fwrite($fp, $text);
+
 //Гоород 2.0(реализации сохранений)
 //4 варианта реализаци
 //Аякс при каждом запросе

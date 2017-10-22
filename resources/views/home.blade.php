@@ -2,17 +2,6 @@
 
 @section('content')
 
-    <?use App\Calendar;?>
-    <?use Illuminate\Database\Eloquent\Model;?>
-    <?use Illuminate\Http\Request;?>
-
-<?
-
-    ?>
-
-
-<?//dd($calendar)?>
-
     <?$testChel = array();?>
     <?for($count=0; $count<= 10000; $count++){
 //        $testChel[] = array('name'=> $count, 'money'=> '10');
@@ -30,7 +19,7 @@
     ];?>
 <!--    --><?//dd($arrayChel);?>
     <div class="map" <?$ChelId = 0;?>>
-        @foreach($testChel as $Chel)
+        @foreach($arrayChel as $Chel)
             <div class="chel"
                  data-id="<?=$ChelId++;?>"
                  data-name="<?=$Chel['name']?>"
@@ -39,13 +28,19 @@
         @endforeach
     </div>
 
-    <div class="calendar" data-countDay="1">
-        <div id="day">1</div>
-        <div id="month">1</div>
-        <div id="year">1</div>
+    <?// Блок календарь?>
+    <?$res = $calendar->countDay; $calendar = [];
+    if(($calendar['D'] = $res%6 )== 0){$calendar['D'] = 6;}
+    if(($calendar['M'] = ceil($res/6)%4) == 0){$calendar['M'] = 4;}
+    $calendar['Y'] = ceil($res/24);?>
+
+    <div class="calendar" data-countDay="<?=$res?>">
+        <div id="day">{{ $calendar['D'] }}</div>
+        <div id="month">{{ $calendar['M'] }}</div>
+        <div id="year">{{ $calendar['Y'] }}</div>
         <div id="nextDay">>></div>
     </div>
 
-
+    <button class="reset">Reset</button>
 
 @endsection
