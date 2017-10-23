@@ -3,12 +3,12 @@
 @section('content')
 
     <?$testChel = array();?>
-    <?for($count=0; $count<= 10000; $count++){
-//        $testChel[] = array('name'=> $count, 'money'=> '10');
-    }?>
+<!--    --><?//for($count=0; $count<= 10000; $count++){
+////        $testChel[] = array('name'=> $count, 'money'=> '10');
+//    }?>
 
 
-<!--            --><?//dd($testChel);?>
+
     <?$arrayChel = [
         array( 'name'=> 'ААА', 'money' => '10' ),
         array( 'name'=> 'ААБ', 'money' => '10' ),
@@ -40,7 +40,7 @@
         <div id="year">{{ $calendar['Y'] }}</div>
         <div id="nextDay">>></div>
     </div>
-
+    <button class="addHuman">Добавить человечков</button>
     <button class="reset">Reset</button>
 
 @endsection

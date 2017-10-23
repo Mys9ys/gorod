@@ -42,6 +42,10 @@ $(document).ready(function(){
             }
         });
     });
+    $('.addHuman').click(function () {
+        addHuman(20);
+    });
+    // end $(document).ready
 });
 
 function calendar() {
@@ -86,4 +90,13 @@ function eatFood() {
 
 function mainAction() {
     calendar();
+}
+
+function addHuman(count) {
+    // console.log('dobavit', count, '4elov' );
+    $.post('/addHuman',{
+        count: count
+    }, function (data) {
+        console.log('vjvo', data);
+    }, "json");
 }

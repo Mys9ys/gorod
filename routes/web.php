@@ -24,3 +24,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::post('/ajaxRequest', 'Ajax\AjaxCalendar@send');
 Route::post('/reset', 'Ajax\Reset@reset');
+Route::post('/addHuman', 'Ajax\addHuman@add');
