@@ -19,3 +19,8 @@ Auth::routes();
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//Route::post('/ajaxRequest', 'Ajax\AjaxController@send');
+
+Route::post('/ajaxRequest', 'Ajax\AjaxCalendar@send');
+Route::post('/reset', 'Ajax\Reset@reset');
