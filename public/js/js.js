@@ -1,6 +1,12 @@
 /**
  * Created by Мусяус on 22.08.2017.
  */
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
 $(document).ready(function(){
 
     $('.calendar').click(function () {
@@ -13,7 +19,7 @@ $(document).ready(function(){
         // var id = $chel.attr('data-id'),
         //     name = $chel.attr('data-name'),
         //     money = $chel.attr('data-money');
-       // console.log('id', $chelData.id);
+        // console.log('id', $chelData.id);
     });
 
     var $map = $('.map');
@@ -26,6 +32,15 @@ $(document).ready(function(){
         var chelY = Math.floor(Math.random() * (mapH - $(this).height())) + mapPos.top;
         console.log('name',$(this).data('name'),'chelX', chelX, 'chelH', chelY);
         $(this).offset({top:chelY,left:chelX})
+    });
+
+    $('.reset').click(function () {
+        $.post({
+            url: '/reset',
+            success: function(result){
+                location.reload();
+            }
+        });
     });
 });
 
@@ -40,21 +55,33 @@ function calendar() {
     $('#day').text(day);
     $('#month').text(month);
     $('#year').text(year);
-    $.get(
-        '/app/Ajax/calendar.php', {
-            count: count
-        }, function () {
-            console.log('vjpolnilo');
-        }, 'json'
-    );
+    $.post({
+        url: '/ajaxRequest',
+        data: { count: count },
+        success: function(result){
+            console.log(result);
+        }
+    });
+
+
+
+
+    // $.ajax({
+    //     type: 'POST',
+    //     url: '/ajaxRequest',
+    //     data: { count: count },
+    //     success: function(result){
+    //         console.log(result);
+    //     }
+    // });
 }
 
 function buyFood() {
-    
+
 }
 
 function eatFood() {
-    
+
 }
 
 function mainAction() {
