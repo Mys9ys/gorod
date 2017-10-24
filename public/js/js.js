@@ -28,10 +28,10 @@ $(document).ready(function(){
     var mapPos = $map.offset();
 
     $('.chel').each(function () {
-        var chelX = Math.floor(Math.random() * (mapW - $(this).width())) + mapPos.left;
-        var chelY = Math.floor(Math.random() * (mapH - $(this).height())) + mapPos.top;
-        console.log('name',$(this).data('name'),'chelX', chelX, 'chelH', chelY);
-        $(this).offset({top:chelY,left:chelX})
+        // var chelX = Math.floor(Math.random() * (mapW - $(this).width())) + mapPos.left;
+        // var chelY = Math.floor(Math.random() * (mapH - $(this).height())) + mapPos.top;
+        // console.log('name',$(this).data('name'),'chelX', chelX, 'chelH', chelY);
+        // $(this).offset({top:chelY,left:chelX})
     });
 
     $('.reset').click(function () {
@@ -45,6 +45,7 @@ $(document).ready(function(){
     $('.addHuman').click(function () {
         addHuman(20);
     });
+    // $('.searchButton')
     // end $(document).ready
 });
 

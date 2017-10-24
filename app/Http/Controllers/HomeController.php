@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Human;
 use Illuminate\Http\Request;
 use App\Calendar;
 
@@ -25,10 +26,12 @@ class HomeController extends Controller
     public function index()
     {
         $calendar = Calendar::all()[0];
+        $humans = Human::all();
 //        dd($calendar);
 
         return view('home', array(
-            'calendar' => $calendar
+            'calendar' => $calendar,
+            'humans' => $humans
         ));
     }
 }

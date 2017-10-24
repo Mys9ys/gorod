@@ -24,19 +24,22 @@
 .calendar #nextDay {
   width: 20%;
 }
-.map {
+.tab-pane {
   position: relative;
   width: 600px;
   height: 400px;
   background: #e1e1e1;
 }
-.map .chel {
-  position: absolute;
+.tab-pane .chel {
+  float: left;
+  margin: 5px;
   width: 20px;
   height: 20px;
-  border: 1px solid blue;
   font-size: 8px;
   border-radius: 2px;
-  box-shadow: 2px 2px 4px blue;
   text-align: center;
+}
+.tab-pane .chel .badge {
+  font-size: 8px;
+  background: #9cc218;
 }

@@ -2,30 +2,52 @@
 
 @section('content')
 
-    <?$testChel = array();?>
-<!--    --><?//for($count=0; $count<= 10000; $count++){
-////        $testChel[] = array('name'=> $count, 'money'=> '10');
-//    }?>
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#panel1">Государство</a></li>
+        <li><a data-toggle="tab" href="#panel2">Панель 2</a></li>
+        <li class="dropdown">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                Другие панели
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a data-toggle="tab" href="#panel3">Панель 3</a></li>
+                <li><a data-toggle="tab" href="#panel4">Панель 4</a></li>
+            </ul>
+        </li>
+    </ul>
 
-
-
-    <?$arrayChel = [
-        array( 'name'=> 'ААА', 'money' => '10' ),
-        array( 'name'=> 'ААБ', 'money' => '10' ),
-        array( 'name'=> 'ААВ', 'money' => '10' ),
-        array( 'name'=> 'ААГ', 'money' => '10' ),
-        array( 'name'=> 'ААД', 'money' => '10' ),
-        array( 'name'=> 'ААЕ', 'money' => '10' ),
-    ];?>
-<!--    --><?//dd($arrayChel);?>
-    <div class="map" <?$ChelId = 0;?>>
-        @foreach($arrayChel as $Chel)
-            <div class="chel"
-                 data-id="<?=$ChelId++;?>"
-                 data-name="<?=$Chel['name']?>"
-                 data-money="<?=$Chel['money']?>"
-                 data-food="" ><?=$Chel['name']?></div>
-        @endforeach
+    <div class="tab-content">
+        <div id="panel1" class="tab-pane fade in active">
+            <h3>Государство</h3>
+            <input type="text" id="searchText">
+            <button id="searchButton">Найти</button>
+            <div class="map">
+                <?foreach($humans as $human) {?>
+                <div class="chel"
+                     data-id="<?=$human['id'];?>"
+                     data-name="<?=$human['name']?>"
+                     data-money="<?=$human['money']?>"
+                     data-job="<?=$human['job']?>"
+                     data-food="" ><?=$human['name']?>
+                    <span class="badge"><?=$human['money']?></span>
+                </div>
+                    <div class="clr"></div>
+                <?}?>
+            </div>
+        </div>
+        <div id="panel2" class="tab-pane fade">
+            <h3>Панель 2</h3>
+            <p>Содержимое 2 панели...</p>
+        </div>
+        <div id="panel3" class="tab-pane fade">
+            <h3>Панель 3</h3>
+            <p>Содержимое 3 панели...</p>
+        </div>
+        <div id="panel4" class="tab-pane fade">
+            <h3>Панель 4</h3>
+            <p>Содержимое 4 панели...</p>
+        </div>
     </div>
 
     <?// Блок календарь?>
