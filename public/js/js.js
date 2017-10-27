@@ -45,6 +45,10 @@ $(document).ready(function(){
     $('.addHuman').click(function () {
         addHuman(20);
     });
+
+    $('.gameSettings').click(function () {
+        $('#myModal').modal('show');
+    });
     // $('.searchButton')
     // end $(document).ready
 });
