@@ -24,8 +24,12 @@
         <div class="tab-content">
             <div id="panel<?=$panelNumber++;?>" class="tab-pane fade">
                 <h3>Меню</h3>
-                <button class="addHuman">Добавить человечков</button>
-                <button class="reset">Reset</button>
+                <div class="gameMenuButton">
+                    <button class="startGame">Начать игру</button>
+                    <button class="gameSettings">Настройки</button>
+                    <button class="addHuman">Добавить человечков</button>
+                    <button class="reset">Reset</button>
+                </div>
             </div>
             <div id="panel<?=$panelNumber++;?>" class="tab-pane fade in active">
                 <h3>Государство</h3>
