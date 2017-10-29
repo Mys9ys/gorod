@@ -16,12 +16,15 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-Auth::routes();
+
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 //Route::post('/ajaxRequest', 'Ajax\AjaxController@send');
 
-Route::post('/ajaxRequest', 'Ajax\AjaxCalendar@send');
-Route::post('/reset', 'Ajax\Reset@reset');
-Route::post('/addHuman', 'Ajax\addHuman@add');
+Route::post('/ajaxRequest', 'Ajax\AjaxCalendar@send'); // работа с календарем
+Route::post('/reset', 'Ajax\Reset@reset'); // сброс всех данных
+Route::post('/addHuman', 'Ajax\addHuman@add'); // добавление человечков
+Route::post('/companyLibGet', 'Ajax\companyLib@get'); // получение списка
+Route::post('/companyLibSet', 'Ajax\companyLib@set'); // установка компании в библиотеку
+Route::post('/companyLibDelete', 'Ajax\companyLib@delete'); // установка компании в библиотеку

@@ -27,6 +27,8 @@
                 <div class="gameMenuButton">
                     <button class="startGame">Начать игру</button>
                     <button class="gameSettings">Настройки</button>
+                    <button class="companyLibrary">Библиотека компаний</button>
+                    <div class="companyLibBox"></div>
                     <button class="addHuman">Добавить человечков</button>
                     <button class="reset">Reset</button>
                 </div>

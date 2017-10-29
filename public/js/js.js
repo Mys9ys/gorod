@@ -7,6 +7,17 @@ $.ajaxSetup({
     }
 });
 
+function validateForm(array) {
+    var flag = true;
+    $.each(array, function (key, value) {
+        if(!value || value == 0){
+            $('#'+key).addClass('alert-danger');
+            flag = false;
+        }
+    });
+    return flag;
+}
+
 $(document).ready(function(){
 
     $('.calendar').click(function () {
@@ -49,7 +60,73 @@ $(document).ready(function(){
     $('.gameSettings').click(function () {
         $('#myModal').modal('show');
     });
-    // $('.searchButton')
+
+    // вывод шаблонов компаний из базы
+    $('.companyLibrary').click(function () {
+        $('.companyLibBox').append('<div class="companyLibRow">'+
+            '<div class="companyLibId">id</div>'+
+            '<div class="companyLibName">Название</div>' +
+            '<div class="companyLibWorkplace">Рабочих мест</div>'+
+            '<div class="companyLibSector">Сектор экономики</div>'+
+            '</div>');
+        $.post('/companyLibGet',
+            function(result){
+                var nextID;
+                $.each(result.companyLib, function (key, value) {
+                    $('.companyLibBox').append('<div class="companyLibRow">'+
+                        '<div class="companyLibId">'+value.id+'</div>'+
+                        '<div class="companyLibName">'+value.name+'</div>' +
+                        '<div class="companyLibWorkplace">'+value.workplace+'</div>'+
+                        '<div class="companyLibSector">'+result.sector[value.sector-1].name+'</div>'+
+                       '<div class="delete">х</div></div>');
+                    nextID = value.id;
+                });
+                $('.companyLibBox').append('<div class="companyLibRow">' +
+                    '<div class="companyLibId">'+(nextID+1)+'</div>'+
+                    '<input type="text" id="companyLibName" class="companyLibName">' +
+                    '<input type="number" id="companyLibWorkplace" class="companyLibWorkplace">' +
+                    '<select id="sectorCompany"><option value="0">Выбрать</option></select>' +
+                    '</div><div class="setCompanyLib">Добавить компанию</div>');
+                $.each(result.sector, function ( value) {
+                    $('#sectorCompany').append('<option value="' + result.sector[value].id + '">' + result.sector[value].name + '</option>')
+                })
+            }, "json"
+        );
+    });
+
+    // удаление шаблона компании
+    $('.companyLibBox').on('click', '.delete', function () {
+        var $this = $(this);
+        var id = $this.parent().find('.companyLibId').text();
+        var data = {
+            id: id
+        };
+        $.post(
+            '/companyLibDelete', data, function (result) {
+                $this.parent().remove();
+            }
+        );
+    });
+
+    // запись шаблона компании
+    $('.companyLibBox').on('click', '.setCompanyLib', function () {
+        var data ={}, validate ={};
+        validate.companyLibName = data.name = $(this).parent().find('#companyLibName').val();
+        validate.companyLibWorkplace = data.workplace = $(this).parent().find('#companyLibWorkplace').val();
+        validate.sectorCompany = data.sector = $(this).parent().find('#sectorCompany').val();
+
+            // валидация заполнения полей
+       if(validateForm(validate) == true){
+           $.post('/companyLibSet', data, function (result) {
+               console.log('result', result);
+           });
+       }
+    });
+    // убираем выделение красным
+    $('.companyLibBox').on('change', '.alert-danger', function () {
+        $(this).removeClass('alert-danger');
+    });
+
     // end $(document).ready
 });
 
@@ -71,18 +148,6 @@ function calendar() {
             console.log(result);
         }
     });
-
-
-
-
-    // $.ajax({
-    //     type: 'POST',
-    //     url: '/ajaxRequest',
-    //     data: { count: count },
-    //     success: function(result){
-    //         console.log(result);
-    //     }
-    // });
 }
 
 function buyFood() {

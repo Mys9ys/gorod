@@ -27,7 +27,7 @@
 .tab-pane{
   position: relative;
   width: 600px;
-  height: 400px;
+  min-height: 400px;
   background: rgb(225, 225, 225);
 }
 .human{
@@ -46,14 +46,49 @@
   }
 }
 .gameMenuButton{
-  width: 60%;
+  width: 100%;
   margin: auto;
   button{
-    width: 80%;
-    margin-left: 10%;
+    width: 50%;
+    margin-left: 25%;
     padding: 7px 20px 7px 20px;
     background: white;
     color: #1f648b;
     text-align: center;
   }
+}
+.companyLibBox{
+  width: 100%;
+  padding-left: 5%;
+  .companyLibId{
+    width: 5%;
+    display: inline-block;
+  }
+  .companyLibName{
+    width: 35%;
+    display: inline-block;
+  }
+  .companyLibWorkplace{
+    width: 20%;
+    display: inline-block;
+  }
+  .companyLibSector{
+    width: 25%;
+    display: inline-block;
+  }
+}
+.setCompanyLib{
+  cursor: pointer;
+  border-radius: 10px;
+  background: greenyellow;
+  padding: 7px 20px;
+  display: inline-block;
+}
+.delete{
+  display: inline-block;
+  background: red;
+  color: black;
+  border-radius: 50%;
+  padding: 1px 9px;
+  cursor: pointer;
 }
