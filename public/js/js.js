@@ -74,11 +74,11 @@ $(document).ready(function(){
                 var nextID;
                 $.each(result.companyLib, function (key, value) {
                     $('.companyLibBox').append('<div class="companyLibRow">'+
-                        '<div class="companyLibId">'+value.id+'</div>'+
-                        '<div class="companyLibName">'+value.name+'</div>' +
-                        '<div class="companyLibWorkplace">'+value.workplace+'</div>'+
-                        '<div class="companyLibSector">'+result.sector[value.sector-1].name+'</div>'+
-                       '<div class="delete">х</div></div>');
+                        '<div class="companyLibId" data="id">'+value.id+'</div>'+
+                        '<input type="text" id="companyLibName" class="companyLibName" data="name" value="'+value.name+'" disabled>' +
+                        '<input type="number" id="companyLibWorkplace" class="companyLibWorkplace" data="workplace" value="'+value.workplace+'" disabled>' +
+                        '<select id="sectorCompany" data="sector" disabled><option value="' + result.sector[value.sector-1].id + '">' + result.sector[value.sector-1].name + '</option></select>' +
+                        '<div class="delete">х</div><div class="edit">изменить</div></div>');
                     nextID = value.id;
                 });
                 $('.companyLibBox').append('<div class="companyLibRow">' +
@@ -110,6 +110,24 @@ $(document).ready(function(){
             }
         );
     });
+
+    $('.companyLibBox').on('click', '.edit', function () {
+        var $this = $(this);
+        var disabled = $this.parent().find(':disabled').prop('disabled',false);
+        $this.parent().append('<div class="confirm">Сохранить</div>');
+        $this.parent().find('.edit').remove();
+    });
+
+    $('.companyLibBox').on('click', '.confirm', function () {
+        var $this = $(this);
+        var value = [];
+        value.id = $this.parent().find('.companyLibId').text();
+        $this.parent().find(':input').each(function () {
+            value[$(this).attr('data')] = $(this).val();
+        });
+        console.log('value', value);
+    });
+
 
     /*это можно попробовать оптимизировать под любые шаблоны
     попробовать запилить все селекторы по БЭМ*/
