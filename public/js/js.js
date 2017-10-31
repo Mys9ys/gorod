@@ -10,7 +10,7 @@ $.ajaxSetup({
 function validateForm(array) {
     var flag = true;
     $.each(array, function (key, value) {
-        if(!value || value == 0){
+        if(!value){
             $('#'+key).addClass('alert-danger');
             flag = false;
         }
@@ -57,9 +57,9 @@ $(document).ready(function(){
         addHuman(20);
     });
 
-    $('.gameSettings').click(function () {
-        $('#myModal').modal('show');
-    });
+    // $('.gameSettings').click(function () {
+    //     $('#myModal').modal('show');
+    // });
 
     // вывод шаблонов компаний из базы
     $('.companyLibrary').click(function () {
@@ -82,18 +82,21 @@ $(document).ready(function(){
                     nextID = value.id;
                 });
                 $('.companyLibBox').append('<div class="companyLibRow">' +
-                    '<div class="companyLibId">'+(nextID+1)+'</div>'+
+                    '<div class="companyLibId">'+(nextID+1)+'</div>' +
                     '<input type="text" id="companyLibName" class="companyLibName">' +
                     '<input type="number" id="companyLibWorkplace" class="companyLibWorkplace">' +
-                    '<select id="sectorCompany"><option value="0">Выбрать</option></select>' +
+                    '<select id="sectorCompany"><option value="">Выбрать</option></select>' +
                     '</div><div class="setCompanyLib">Добавить компанию</div>');
-                $.each(result.sector, function ( value) {
+                $.each(result.sector, function (value) {
                     $('#sectorCompany').append('<option value="' + result.sector[value].id + '">' + result.sector[value].name + '</option>')
                 })
             }, "json"
         );
+        $('.companyLibBox').toggle();
     });
 
+
+    /*это можно попробовать оптимизировать под любые шаблоны*/
     // удаление шаблона компании
     $('.companyLibBox').on('click', '.delete', function () {
         var $this = $(this);
@@ -108,12 +111,18 @@ $(document).ready(function(){
         );
     });
 
+    /*это можно попробовать оптимизировать под любые шаблоны
+    попробовать запилить все селекторы по БЭМ*/
+
     // запись шаблона компании
     $('.companyLibBox').on('click', '.setCompanyLib', function () {
         var data ={}, validate ={};
         validate.companyLibName = data.name = $(this).parent().find('#companyLibName').val();
         validate.companyLibWorkplace = data.workplace = $(this).parent().find('#companyLibWorkplace').val();
         validate.sectorCompany = data.sector = $(this).parent().find('#sectorCompany').val();
+
+       var child = $(this).parent().children();
+       console.log('child', child);
 
             // валидация заполнения полей
        if(validateForm(validate) == true){
