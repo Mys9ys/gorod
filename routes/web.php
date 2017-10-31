@@ -19,6 +19,7 @@ Auth::routes();
 
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/setting', 'SettingController@index')->name('setting');
 
 //Route::post('/ajaxRequest', 'Ajax\AjaxController@send');
 
