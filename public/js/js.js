@@ -7,11 +7,14 @@ $.ajaxSetup({
     }
 });
 
-function validateForm(array) {
+function validateForm(selector,array) {
     var flag = true;
+    console.log('value selector', selector);
     $.each(array, function (key, value) {
+        console.log('value validate', value);
         if(!value){
-            $('#'+key).addClass('alert-danger');
+            $(selector).children('[data='+key+']').addClass('alert-danger');
+            console.log('key', key);
             flag = false;
         }
     });
@@ -19,6 +22,7 @@ function validateForm(array) {
 }
 
 $(document).ready(function(){
+
 
     $('.calendar').click(function () {
         console.log('zm9k');
@@ -45,6 +49,7 @@ $(document).ready(function(){
         // $(this).offset({top:chelY,left:chelX})
     });
 
+    // сброс базы на 0
     $('.reset').click(function () {
         $.post({
             url: '/reset',
@@ -53,6 +58,8 @@ $(document).ready(function(){
             }
         });
     });
+
+    // добавление человечков по кнопке
     $('.addHuman').click(function () {
         addHuman(20);
     });
@@ -61,46 +68,79 @@ $(document).ready(function(){
     //     $('#myModal').modal('show');
     // });
 
+    buildList({ bindBlock: '.companyLibBox'} , [0,2,4,2]);
+    function buildList(setting, array) {
+        var Prop = {
+            bindBlock : 'body',
+            box : 'itemBox',
+            name1 : '#',
+            tag1 : 'div',
+            class1 : 'col1',
+        };
+        Prop = $.extend(Prop,setting);
+
+        var content = '';
+        content = '<'+Prop.tag1+' class="'+Prop.class1+'"></'+Prop.tag1+'>';
+        $(Prop.class1).text(Prop.name1);
+        $(Prop.bindBlock).append('<div class="'+Prop.box+'">'+content+'</div>');
+        // console.log('defaultProp',Prop);
+    }
+
     // вывод шаблонов компаний из базы
     $('.companyLibrary').click(function () {
+        $('.companyLibBox').children().remove();
         $('.companyLibBox').append('<div class="companyLibRow">'+
-            '<div class="companyLibId">id</div>'+
-            '<div class="companyLibName">Название</div>' +
-            '<div class="companyLibWorkplace">Рабочих мест</div>'+
-            '<div class="companyLibSector">Сектор экономики</div>'+
+            '<div class="companyLibName badge">Название</div>' +
+            '<div class="companyLibWorkplace badge">Рабочих мест</div>'+
+            '<div class="companyLibSector badge">Сектор экономики</div>'+
             '</div>');
         $.post('/companyLibGet',
             function(result){
-                var nextID;
+                var nextID='';
                 $.each(result.companyLib, function (key, value) {
-                    $('.companyLibBox').append('<div class="companyLibRow">'+
-                        '<div class="companyLibId" data="id">'+value.id+'</div>'+
-                        '<input type="text" id="companyLibName" class="companyLibName" data="name" value="'+value.name+'" disabled>' +
-                        '<input type="number" id="companyLibWorkplace" class="companyLibWorkplace" data="workplace" value="'+value.workplace+'" disabled>' +
-                        '<select id="sectorCompany" data="sector" disabled><option value="' + result.sector[value.sector-1].id + '">' + result.sector[value.sector-1].name + '</option></select>' +
-                        '<div class="delete">х</div><div class="edit">изменить</div></div>');
+                    addContent(value,result);
                     nextID = value.id;
                 });
-                $('.companyLibBox').append('<div class="companyLibRow">' +
-                    '<div class="companyLibId">'+(nextID+1)+'</div>' +
-                    '<input type="text" id="companyLibName" class="companyLibName">' +
-                    '<input type="number" id="companyLibWorkplace" class="companyLibWorkplace">' +
-                    '<select id="sectorCompany"><option value="">Выбрать</option></select>' +
-                    '</div><div class="setCompanyLib">Добавить компанию</div>');
-                $.each(result.sector, function (value) {
-                    $('#sectorCompany').append('<option value="' + result.sector[value].id + '">' + result.sector[value].name + '</option>')
-                })
+                var value = {id : nextID+1,
+                    name: '',
+                };
+                addContent(value,result);
             }, "json"
         );
         $('.companyLibBox').toggle();
     });
 
+    // включение контента
+    function addContent(value,result) {
+        if(value.sector){ var select = result.sector[value.sector-1].id; var disabled = 'disabled'}
+        var content = '';
+        content = content + '<input type="text" class="companyLibName badge" data="name" value="'+value.name+'" '+disabled+'>';
+        content = content + '<input type="number" class="companyLibWorkplace badge" data="workplace" value="'+value.workplace+'" '+disabled+'>';
+        content = content + selectFilling(result.sector, select);
+        if(value.name) {content = content + '<div class="delete"></div><div class="edit"></div>';}
+        else {content = content + '<div class="setCompanyLib">Сохранить</div>';}
+        $('.companyLibBox').append('<div class="companyLibRow" data-id="'+value.id+'">'+content+'</div>');
+    }
+
+    // установка элемента селект
+    function selectFilling(array, selected) {
+        var option ='';
+        var disabled = 'disabled';
+        if (!selected) {option = option + '<option value="">Выбрать</option>'; disabled = '';}
+        $.each(array, function (key, value) {
+            var select = '';
+            if (value.id == selected) {select = 'selected';}
+            option = option + '<option value="' + value.id + '" '+select+' >' + value.name + '</option>';
+        });
+        option = '<select data="sector" class="badge" '+disabled+'>'+option+'</select>';
+        return option;
+    }
 
     /*это можно попробовать оптимизировать под любые шаблоны*/
     // удаление шаблона компании
     $('.companyLibBox').on('click', '.delete', function () {
         var $this = $(this);
-        var id = $this.parent().find('.companyLibId').text();
+        var id = $this.parent().data('id');
         var data = {
             id: id
         };
@@ -111,21 +151,28 @@ $(document).ready(function(){
         );
     });
 
+    // Редактирование записи
     $('.companyLibBox').on('click', '.edit', function () {
         var $this = $(this);
         var disabled = $this.parent().find(':disabled').prop('disabled',false);
-        $this.parent().append('<div class="confirm">Сохранить</div>');
+        $this.parent().append('<div class="confirm"></div>');
         $this.parent().find('.edit').remove();
     });
-
+    // подтверждение изменений
     $('.companyLibBox').on('click', '.confirm', function () {
         var $this = $(this);
-        var value = [];
-        value.id = $this.parent().find('.companyLibId').text();
+        var value = {};
+        value.id = $this.parent().data('id');
         $this.parent().find(':input').each(function () {
             value[$(this).attr('data')] = $(this).val();
         });
-        console.log('value', value);
+        console.log('izmeneni9', value);
+        if(validateForm($this.parent(),value) == true){
+            $.post('/companyLibUpdate', value, function (result) {
+                $this.parent().append('<div class="edit"></div>');
+                $this.parent().find('.confirm').remove();
+            });
+        }
     });
 
 
@@ -134,20 +181,35 @@ $(document).ready(function(){
 
     // запись шаблона компании
     $('.companyLibBox').on('click', '.setCompanyLib', function () {
-        var data ={}, validate ={};
-        validate.companyLibName = data.name = $(this).parent().find('#companyLibName').val();
-        validate.companyLibWorkplace = data.workplace = $(this).parent().find('#companyLibWorkplace').val();
-        validate.sectorCompany = data.sector = $(this).parent().find('#sectorCompany').val();
+        var $this = $(this);
+        var value = {};
+        $this.parent().find(':input').each(function () {
+            value[$(this).attr('data')] = $(this).val();
+        });
+        $this.parent().children('[data=sector]').each(function(key,value){
+            console.log('select value' ,value.value);
+        });
+        // console.log('sector',sector);
+        if(validateForm($this.parent(),value) == true){
+            $.post('/companyLibSet', value, function (result) {
+                addContent(value, { 0: 'выбрать'});
+            });
+        }
 
-       var child = $(this).parent().children();
-       console.log('child', child);
+       //  var data ={}, validate ={};
+       //  validate.companyLibName = data.name = $(this).parent().find('#companyLibName').val();
+       //  validate.companyLibWorkplace = data.workplace = $(this).parent().find('#companyLibWorkplace').val();
+       //  validate.sectorCompany = data.sector = $(this).parent().find('#sectorCompany').val();
+       //
+       // var child = $(this).parent().children();
+       // console.log('data', data);
 
             // валидация заполнения полей
-       if(validateForm(validate) == true){
-           $.post('/companyLibSet', data, function (result) {
-               console.log('result', result);
-           });
-       }
+       // if(validateForm(validate) == true){
+       //     $.post('/companyLibSet', data, function (result) {
+       //         console.log('result', result);
+       //     });
+       // }
     });
     // убираем выделение красным
     $('.companyLibBox').on('change', '.alert-danger', function () {
@@ -197,3 +259,4 @@ function addHuman(count) {
         console.log('vjvo', data);
     }, "json");
 }
+

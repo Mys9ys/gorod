@@ -63,7 +63,7 @@
   display: inline-block;
 }
 .companyLibBox .companyLibName {
-  width: 35%;
+  width: 30%;
   display: inline-block;
 }
 .companyLibBox .companyLibWorkplace {
@@ -71,7 +71,11 @@
   display: inline-block;
 }
 .companyLibBox .companyLibSector {
-  width: 25%;
+  width: 15%;
+  display: inline-block;
+}
+.companyLibBox .btn-block {
+  width: 10%;
   display: inline-block;
 }
 .setCompanyLib {
@@ -84,24 +88,27 @@
 .delete {
   display: inline-block;
   background: red;
-  color: black;
-  border-radius: 50%;
-  padding: 1px 9px;
+  background: url('/public/image/player/060.png');
+  width: 20px;
+  height: 20px;
+  background-size: cover;
+  -webkit-filter: hue-rotate(50deg);
+  filter: hue-rotate(50deg);
   cursor: pointer;
 }
 .edit {
   display: inline-block;
-  background: green;
-  color: black;
-  border-radius: 50%;
-  padding: 1px 9px;
+  background: url('/public/image/work/023.png');
+  width: 20px;
+  height: 20px;
+  background-size: cover;
   cursor: pointer;
 }
 .confirm {
   display: inline-block;
-  background: green;
-  color: black;
-  border-radius: 50%;
-  padding: 1px 9px;
+  background: url('/public/image/player/059.png');
+  width: 20px;
+  height: 20px;
+  background-size: cover;
   cursor: pointer;
 }

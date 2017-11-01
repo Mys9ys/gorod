@@ -28,6 +28,14 @@ class companyLib extends Controller
     public function delete(Request $request) { // удаление данных по id
         $companyLib = CompanyLibrary::find($request->id);
         $companyLib->delete();
-
+    }
+    public function update(Request $request)
+    { // изменение данных в базе
+        $companyLib = CompanyLibrary::find($request->id);
+        $companyLib->name = $request->name;
+        $companyLib->workplace = $request->workplace;
+        $companyLib->sector = $request->sector;
+        if ($companyLib->update()) {return json_encode('запись удалась');}
+        else { return json_encode('Проблема');}
     }
 }

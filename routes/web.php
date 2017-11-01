@@ -28,4 +28,5 @@ Route::post('/reset', 'Ajax\Reset@reset'); // сброс всех данных
 Route::post('/addHuman', 'Ajax\addHuman@add'); // добавление человечков
 Route::post('/companyLibGet', 'Ajax\companyLib@get'); // получение списка
 Route::post('/companyLibSet', 'Ajax\companyLib@set'); // установка компании в библиотеку
+Route::post('/companyLibUpdate', 'Ajax\companyLib@update'); // установка компании в библиотеку
 Route::post('/companyLibDelete', 'Ajax\companyLib@delete'); // установка компании в библиотеку
