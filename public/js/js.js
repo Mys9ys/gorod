@@ -68,32 +68,28 @@ $(document).ready(function(){
     //     $('#myModal').modal('show');
     // });
 
-    buildList({ bindBlock: '.companyLibBox'} , [0,2,4,2]);
-    function buildList(setting, array) {
-        var Prop = {
-            bindBlock : 'body',
-            box : 'itemBox',
-            name1 : '#',
-            tag1 : 'div',
-            class1 : 'col1',
-        };
-        Prop = $.extend(Prop,setting);
-
-        var content = '';
-        content = '<'+Prop.tag1+' class="'+Prop.class1+'"></'+Prop.tag1+'>';
-        $(Prop.class1).text(Prop.name1);
-        $(Prop.bindBlock).append('<div class="'+Prop.box+'">'+content+'</div>');
-        // console.log('defaultProp',Prop);
-    }
+    // buildList({ bindBlock: '.companyLibBox'} , [0,2,4,2]);
+    // function buildList(setting, array) {
+    //     var Prop = {
+    //         bindBlock : 'body',
+    //         box : 'itemBox',
+    //         name1 : '#',
+    //         tag1 : 'div',
+    //         class1 : 'col1',
+    //     };
+    //     Prop = $.extend(Prop,setting);
+    //
+    //     var content = '';
+    //     content = '<'+Prop.tag1+' class="'+Prop.class1+'"></'+Prop.tag1+'>';
+    //     $(Prop.class1).text(Prop.name1);
+    //     $(Prop.bindBlock).append('<div class="'+Prop.box+'">'+content+'</div>');
+    //     // console.log('defaultProp',Prop);
+    // }
 
     // вывод шаблонов компаний из базы
     $('.companyLibrary').click(function () {
         $('.companyLibBox').children().remove();
-        $('.companyLibBox').append('<div class="companyLibRow">'+
-            '<div class="companyLibName badge">Название</div>' +
-            '<div class="companyLibWorkplace badge">Рабочих мест</div>'+
-            '<div class="companyLibSector badge">Сектор экономики</div>'+
-            '</div>');
+        $('.companyLibBox').append('');
         $.post('/companyLibGet',
             function(result){
                 var nextID='';

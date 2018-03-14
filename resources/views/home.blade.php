@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@include('layouts.header')
 @section('content')
     <div class="container">
         <?$tabNumber=1;?>
@@ -78,6 +78,7 @@
             <div id="year">{{ $calendar['Y'] }}</div>
             <div id="nextDay">>></div>
         </div>
+            @include('block.calendar')
     </div>
 
 
