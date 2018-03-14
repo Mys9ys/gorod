@@ -28,7 +28,7 @@
                     <button class="startGame">Начать игру</button>
                     <a href="/setting"><button class="gameSettings">Настройки</button></a>
                     <button class="addHuman">Добавить человечков</button>
-                    <button class="reset">Reset</button>
+                    <button class="reset">Reset</button> 
                 </div>
             </div>
             <div id="panel<?=$panelNumber++;?>" class="tab-pane fade in active">
