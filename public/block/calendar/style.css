@@ -1,5 +1,5 @@
 .calendar_left_button {
-  width: 20px;
-  height: 20px;
-  background: rebeccapurple;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
 }
