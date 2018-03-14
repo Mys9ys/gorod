@@ -26,7 +26,7 @@
 }
 .tab-pane {
   position: relative;
-  width: 600px;
+  width: 100%;
   min-height: 400px;
   background: #e1e1e1;
 }
@@ -53,28 +53,23 @@
   color: #1f648b;
   text-align: center;
 }
-.companyLibBox {
+.companyLibRow {
   width: 100%;
   padding-left: 5%;
-  display: none;
 }
-.companyLibBox .companyLibId {
-  width: 5%;
-  display: inline-block;
-}
-.companyLibBox .companyLibName {
+.companyLibRow .companyLibName {
   width: 30%;
   display: inline-block;
 }
-.companyLibBox .companyLibWorkplace {
+.companyLibRow .companyLibWorkplace {
   width: 20%;
   display: inline-block;
 }
-.companyLibBox .companyLibSector {
+.companyLibRow .companyLibSector {
   width: 15%;
   display: inline-block;
 }
-.companyLibBox .btn-block {
+.companyLibRow .btn-block {
   width: 10%;
   display: inline-block;
 }
@@ -87,7 +82,6 @@
 }
 .delete {
   display: inline-block;
-  background: red;
   background: url('/public/image/player/060.png');
   width: 20px;
   height: 20px;
