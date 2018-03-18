@@ -1,5 +1,27 @@
+.calendar {
+  display: inline-block;
+}
 .calendar_left_button {
   width: 40px;
   height: 40px;
-  border-radius: 50%;
+  border-radius: 50% 0 0 50%;
+  border: 1px solid gray;
+}
+.calendar_center {
+  width: 40px;
+}
+.calendar_center .calendar_title_block,
+.calendar_center .calendar_value_block {
+  width: 100%;
+}
+.calendar_center .calendar_value,
+.calendar_center .calendar_title {
+  width: 50%;
+  text-align: center;
+}
+.calendar_year {
+  width: 40px;
+  height: 40px;
+  border-radius: 0 50% 50% 0;
+  border: 1px solid gray;
 }

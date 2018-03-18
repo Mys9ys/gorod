@@ -1,27 +1,27 @@
-.calendar {
+.calendar2 {
   width: 120px;
   height: 30px;
   border: 1px solid darkgrey;
   cursor: pointer;
 }
-.calendar div {
+.calendar2 div {
   float: left;
   text-align: center;
   height: 100%;
 }
-.calendar #day {
+.calendar2 #day {
   width: 20%;
   border-right: 1px solid darkgrey;
 }
-.calendar #month {
+.calendar2 #month {
   width: 20%;
   border-right: 1px solid darkgrey;
 }
-.calendar #year {
+.calendar2 #year {
   width: 40%;
   border-right: 1px solid darkgrey;
 }
-.calendar #nextDay {
+.calendar2 #nextDay {
   width: 20%;
 }
 .tab-pane {
