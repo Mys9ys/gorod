@@ -1,11 +1,15 @@
-.calendar{
+.calendar-block{
   display: inline-block;
 }
 .calendar_left_button{
+  position: relative;
+  display: inline-block;
+  text-align: center;
   width: 40px;
   height: 40px;
   border-radius: 50% 0 0 50%;
   border: 1px solid gray;
+  cursor: pointer;
 }
 .calendar_center{
   width: 40px;
@@ -22,4 +26,13 @@
   height: 40px;
   border-radius: 0 50% 50% 0;
   border: 1px solid gray;
+}
+.time-of-day{
+
+}
+.next-day{
+  display: none;
+  position: absolute;
+  top:-2px;
+  right: 5px;
 }

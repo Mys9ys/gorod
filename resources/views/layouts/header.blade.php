@@ -22,4 +22,5 @@
 
     <!-- Scripts -->
     <script src="{{ asset('public/js/jquery-3.0.0.min.js') }}"></script>
+    <script src="{{ asset('public/js/app.js') }}"></script>
 </head>

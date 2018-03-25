@@ -19,11 +19,12 @@ Auth::routes();
 
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/main', 'MainController@index')->name('main');
 Route::get('/setting', 'SettingController@index')->name('setting');
 
 //Route::post('/ajaxRequest', 'Ajax\AjaxController@send');
 
-Route::post('/ajaxRequest', 'Ajax\AjaxCalendar@send'); // работа с календарем
+Route::post('/ajaxCalendar', 'Ajax\AjaxCalendar@send'); // работа с календарем
 Route::post('/reset', 'Ajax\Reset@reset'); // сброс всех данных
 Route::post('/addHuman', 'Ajax\addHuman@add'); // добавление человечков
 Route::post('/companyLibGet', 'Ajax\companyLib@get'); // получение списка

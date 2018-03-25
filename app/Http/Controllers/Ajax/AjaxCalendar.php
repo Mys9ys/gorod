@@ -11,7 +11,8 @@ class AjaxCalendar extends Controller
     public function send(Request $request)
     {
         $res = Calendar::latest()->first();
-        $res->countDay = $request->count;
+        $res->partDay = $request->partDay;
+        $res->countDay = $request->countDay;
         $res->update();
     }
 }

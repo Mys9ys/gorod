@@ -215,25 +215,25 @@ $(document).ready(function(){
     // end $(document).ready
 });
 
-function calendar() {
-    var count = $('.calendar').attr('data-countDay');
-    count++;
-    var day,month;
-    if((day = count%6) == 0) {day = 6;}
-    if((month = Math.ceil(count/6)%4) == 0) {month=4;}
-    var year = Math.ceil(count/24);
-    $('.calendar').attr('data-countDay', count);
-    $('#day').text(day);
-    $('#month').text(month);
-    $('#year').text(year);
-    $.post({
-        url: '/ajaxRequest',
-        data: { count: count },
-        success: function(result){
-            console.log(result);
-        }
-    });
-}
+// function calendar() {
+//     var count = $('.calendar').attr('data-countDay');
+//     count++;
+//     var day,month;
+//     if((day = count%6) == 0) {day = 6;}
+//     if((month = Math.ceil(count/6)%4) == 0) {month=4;}
+//     var year = Math.ceil(count/24);
+//     $('.calendar').attr('data-countDay', count);
+//     $('#day').text(day);
+//     $('#month').text(month);
+//     $('#year').text(year);
+//     $.post({
+//         url: '/ajaxRequest',
+//         data: { count: count },
+//         success: function(result){
+//             console.log(result);
+//         }
+//     });
+// }
 
 function buyFood() {
 
