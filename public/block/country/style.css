@@ -1,0 +1,39 @@
+.create_country {
+  display: inline-block;
+  cursor: pointer;
+}
+.create_country .fa-plus {
+  color: #9cc218;
+}
+.create_country .hidden-title {
+  display: none;
+  color: #9cc218;
+}
+.create_country .fa-stack {
+  display: inline-block;
+  border-radius: 50%;
+  box-shadow: 0px 2px 8px 0px rgba(40, 40, 40, 0.3);
+}
+.create_country .fa-stack:active {
+  box-shadow: inset 0px 2px 8px 0px rgba(40, 40, 40, 0.3);
+}
+.form-wrap {
+  position: relative;
+}
+.form-wrap .form-info {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: inset 0px 2px 8px 0px rgba(40, 40, 40, 0.3);
+  padding: 5px 10px;
+}
+.form-wrap .form-title {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 6px 10px;
+  border: 1px solid grey;
+  border-radius: 0 10px 10px 0;
+  background: #ffffff;
+  box-shadow: 0px 2px 8px 0px rgba(40, 40, 40, 0.3);
+  cursor: pointer;
+}

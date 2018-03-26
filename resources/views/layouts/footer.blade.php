@@ -1,7 +1,18 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: user2
- * Date: 14.03.2018
- * Time: 12:42
- */
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal"
+                    style="float:right;padding:5px 10px 0 0;z-index:1;position:relative;">&times;
+            </button>
+            <div class="modal-header">
+                <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+                <p>Some text in the modal.</p>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
