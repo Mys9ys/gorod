@@ -7,7 +7,7 @@ $(document).ready(function () {
         $('#myModal').find('.modal-body').html('' +
             '<div class="form-wrap">'+
                 '<input class="form-info country_name" type="text" placeholder="Название">'+
-                '<span class="form-title country_generate">Сгенерировать</span>'+
+                '<span class="form-title form_button country_generate">Сгенерировать</span>'+
             '</div>');
         // $('#myModal').find('.modal-header').css('background-color', 'rgb(156, 194, 24)');
         // $('#myModal').find('.modal-header').css('color', 'rgb(255, 255, 255)');
@@ -17,7 +17,7 @@ $(document).ready(function () {
         $('#myModal').modal('show');
     });
     $('#myModal').on('click', '.country_generate', function () {
-        
+        console.log('mi tyt', consonant_letter[0]);
     });
     
 });
