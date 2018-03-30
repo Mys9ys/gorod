@@ -7,6 +7,7 @@
     </span>
     <span class="hidden-title">Создать страну</span>
 </div>
+
 {{--<div class="form-wrap">--}}
     {{--<input class="form-info country_name" type="text" placeholder="Название">--}}
     {{--<span class="form-title">Сгенерировать</span>--}}
