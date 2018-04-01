@@ -28,19 +28,28 @@ $(document).ready(function () {
         $('.city_name').val(generateName('city'));
     });
     $('#myModal').on('click', '.add_country', function () {
-        var data ={};
+        var data ={}, validate = '';
         $('.modal-body').find('input').each(function () {
-            console.log('mi tyt', $(this).attr('data'));
-            data[$(this).attr('data')]=$(this).val();
-        });
-        $.post(
-            '/setCountry',
-            data,
-            function (result) {
-                console.log('result', result);
+            if($(this).val()!= null && $(this).val()!=''){
+                data[$(this).attr('data')]=$(this).val();
+                if($(this).val().length<4){
+                    validate = 1;
+                }
+            } else {
+                $(this).addClass('form_fail');
+                validate = 1;
             }
-        );
-        console.log('mi tyt', data);
+        });
+        console.log('validate', validate);
+        if(validate != 1){
+            $.post(
+                '/setCountry',
+                data,
+                function (result) {
+                    console.log('result', result);
+                }
+            );
+        }
     });
     
 });

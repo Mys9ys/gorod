@@ -42,3 +42,6 @@
 .form-wrap .form_button:active {
   box-shadow: inset 0px 2px 8px 0px rgba(40, 40, 40, 0.3);
 }
+.form_fail {
+  border-color: #ff6347;
+}
