@@ -17,11 +17,6 @@ class setInfo extends Controller
        $city->name = $request->city_name;
        $city->country = $country->id;
        $city->save();
-
-
-//       dd($request->city_name);
         return json_encode($city->id);
-//        if ($companyLib->save()) {return json_encode('запись удалась');}
-//        else { return json_encode('Проблема записи');}
     }
 }

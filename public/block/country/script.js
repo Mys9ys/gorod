@@ -51,5 +51,12 @@ $(document).ready(function () {
             );
         }
     });
-    
+    //Выбор страны для отображения
+    $('.country-button').click(function () {
+        $.cookie('CountryID', $(this).data('id'), {
+            expires: 365,
+            path: '/'
+        });
+    });
+
 });

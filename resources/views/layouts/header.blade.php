@@ -24,4 +24,34 @@
     <script src="{{ asset('public/js/jquery-3.0.0.min.js') }}"></script>
     <script src="{{ asset('public/js/app.js') }}"></script>
     <script src="{{ asset('public/js/main.js') }}"></script>
+    <script src="{{ asset('public/js/jquery.cookie.js') }}"></script>
 </head>
+<body>
+<nav class="navbar navbar-default navbar-static-top">
+    <div class="container">
+        <div class="navbar-header">
+
+
+
+            <!-- Branding Image -->
+            <div class="navbar-brand">
+                <?if(isset($_COOKIE['CountryID'])){
+                    $country = \App\Country::find($_COOKIE['CountryID']);?>
+                    <?=$country->name;
+                }?>
+            </div>
+        </div>
+
+        <div class="collapse navbar-collapse" id="app-navbar-collapse">
+            <!-- Left Side Of Navbar -->
+            <ul class="nav navbar-nav">
+                &nbsp;
+            </ul>
+
+            <!-- Right Side Of Navbar -->
+            <ul class="nav navbar-nav navbar-right">
+                <!-- Authentication Links -->
+            </ul>
+        </div>
+    </div>
+</nav>

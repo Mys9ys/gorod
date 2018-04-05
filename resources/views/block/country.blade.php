@@ -12,6 +12,19 @@
     {{--<input class="form-info country_name" type="text" placeholder="Название">--}}
     {{--<span class="form-title">Сгенерировать</span>--}}
 {{--</div>--}}
+<?$arCountries = \App\Country::all();
+$arHuman = \App\Human::all();
+//dd(count($arCountries));
+//dd($arCountries[0]->name);
+if(count($arCountries)>1){
+    foreach ($arCountries as $country){?>
+        <div class="country-button" data-id="<?=$country->id?>"><?=$country->name?></div>
+    <?}
+} else {
+$country = $arCountries[0]?>
+    <div class="country-button" data-id="<?=$country->id?>"><?=$country->name?></div>
+<?}?>
+
 
 
 
