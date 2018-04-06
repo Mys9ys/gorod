@@ -1,6 +1,6 @@
 @include('layouts.header')
 <div class="container">
-    @include('block.calendar')
+
     <?$tabNumber=1;?>
     <ul class="nav nav-tabs">
         <li><a data-toggle="tab" href="#panel<?=$tabNumber++;?>">Меню</a></li>

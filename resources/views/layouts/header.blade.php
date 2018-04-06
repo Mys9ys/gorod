@@ -50,7 +50,7 @@
 
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
-                <!-- Authentication Links -->
+                @include('block.calendar')
             </ul>
         </div>
     </div>
