@@ -31,14 +31,19 @@
     <div class="container">
         <div class="navbar-header">
 
-
-
             <!-- Branding Image -->
             <div class="navbar-brand">
                 <?if(isset($_COOKIE['CountryID'])){
                     $country = \App\Country::find($_COOKIE['CountryID']);?>
-                    <?=$country->name;
-                }?>
+                    <img class="country_icon left" src="public/image/country_icon.jpg" alt="">
+                    <div class="CountryID left" data="<?=$country->id;?>"><?=$country->name;?></div>
+                    <?if(isset($_COOKIE['CityID'])){
+                        $city = \App\City::find($_COOKIE['CityID']);?>
+                        <i class="fa fa-angle-right left" aria-hidden="true"></i>
+                        <img class="city_icon left" src="public/image/city_icon.jpg" alt="">
+                        <div class="CityID left" data="<?=$city->id;?>"><?=$city->name;?></div>
+                    <?}?>
+                <?}?>
             </div>
         </div>
 

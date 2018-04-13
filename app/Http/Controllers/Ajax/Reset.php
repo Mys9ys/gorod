@@ -12,6 +12,7 @@ class Reset extends Controller
     public function reset(Request $request){
         $res = Calendar::latest()->first();
         $res->countDay = 1;
+        $res->partDay = 1;
         $res->update();
 
         $res = new Human();

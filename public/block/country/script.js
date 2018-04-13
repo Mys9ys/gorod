@@ -1,7 +1,11 @@
 $(document).ready(function () {
-    $('.create_country').hover(function () {
-        $(this).find('.hidden-title').toggle(400);
+    $('.create_country').mouseenter(function () {
+        $(this).find('.hidden-title').fadeIn(400);
     });
+    $('.create_country').mouseenter(function () {
+        $(this).find('.hidden-title').fadeOut(400);
+    });
+    // заложить страну
     $('.create_country').click(function () {
         $('#myModal').find('.modal-header').html('<span>Основать государство</span>');
         $('#myModal').find('.modal-body').html('' +
@@ -57,6 +61,14 @@ $(document).ready(function () {
             expires: 365,
             path: '/'
         });
+        location.reload();
+    });
+    $('.city-button').click(function () {
+        $.cookie('CityID', $(this).data('id'), {
+            expires: 365,
+            path: '/'
+        });
+        location.reload();
     });
 
 });

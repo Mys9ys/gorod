@@ -49,15 +49,7 @@ $(document).ready(function(){
         // $(this).offset({top:chelY,left:chelX})
     });
 
-    // сброс базы на 0
-    $('.reset').click(function () {
-        $.post({
-            url: '/reset',
-            success: function(result){
-                location.reload();
-            }
-        });
-    });
+
 
     // добавление человечков по кнопке
     $('.addHuman').click(function () {

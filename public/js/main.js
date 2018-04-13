@@ -1,4 +1,13 @@
 $(document).ready(function () {
+    // сброс базы на 0
+    $('.reset').click(function () {
+        $.post({
+            url: '/reset',
+            success: function(result){
+                location.reload();
+            }
+        });
+    });
 
 });
 
@@ -15,7 +24,7 @@ function countryNameEnd(){
 function generateName(value) {
     var consonant_letter = ['б', 'в', 'г', 'д', 'ж', 'з', 'к', 'л', 'м', 'н', 'п', 'р', 'с', 'т', 'ф', 'х', 'ц', 'ч', 'ш'];
     var vowels_letter = ['а', 'е', 'и', 'о', 'у', 'э', 'ю', 'я'];
-    var cityEnd = ['поль', 'ск', 'град', 'вилль', 'бург'];
+    var cityEnd = ['поль', 'ск', 'град', 'вилль', 'бург', 'дорф' , 'лэнд'];
     var countryEnd = ['ия','оя','ая'];
     var content='';
     switch (value) {
@@ -23,7 +32,7 @@ function generateName(value) {
             for (i=0; i<Math.random()*2; i++){
                 content = content + slog();
             }
-            content = content+cityEnd[Math.floor(Math.random()*5)];
+            content = content+cityEnd[Math.floor(Math.random()*7)];
             break;
         case "country":
             for (i=0; i<Math.random()*2; i++){
@@ -62,4 +71,13 @@ function slog() {
         }
     });
     return letter1+letter2;
+}
+
+function addHuman(count) {
+    // console.log('dobavit', count, '4elov' );
+    $.post('/addHuman',{
+        count: count
+    }, function (data) {
+        console.log('vjvo', data);
+    }, "json");
 }
