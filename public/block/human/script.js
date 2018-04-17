@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    // Выводим модальное окно с добавлением
    $('.generate_human').click(function () {
        $('#myModal').find('.modal-header').html('<span>Добавить человечков</span>');
        $('#myModal').find('.modal-body').html('' +
@@ -11,6 +12,7 @@ $(document).ready(function () {
 
        $('#myModal').modal('show');
    });
+   // кнопка генерации имен человечков
     var data = {};
     $('#myModal').on('click', '.human_generate', function () {
         $('#myModal').find('.human_alert').remove();
@@ -26,9 +28,11 @@ $(document).ready(function () {
             $('#myModal').find('button').attr('disabled');
         }
     });
+    // убираем валидацию
     $('#myModal').on('keyup', '.human_generate', function () {
         $('#myModal').find('.human_alert').remove();
     });
+    // передаем массив имен через аякс
     $('#myModal').on('click', '.add_human', function () {
         console.log('data', data);
         if(data[0]){

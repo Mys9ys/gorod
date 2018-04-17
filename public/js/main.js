@@ -95,8 +95,3 @@ function slog() {
     return letter1+letter2;
 }
 
-
-function addHuman(count) {
-    // console.log('dobavit', count, '4elov' );
-
-}

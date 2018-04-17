@@ -36,7 +36,6 @@ function calendar() {
        '/ajaxCalendar',
         data,
         function(result){
-            console.log(result);
         }
     );
 }
