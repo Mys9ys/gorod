@@ -8,19 +8,39 @@ $(document).ready(function () {
             }
         });
     });
-
+    $('.add_btn').on('mouseenter mouseleave',function () {
+        $(this).find('.hidden-title').fadeToggle(400);
+    });
 });
-
-function nameSlog(){
-
+// функция вызова функции на часть дня
+function partDays() {
+    var part = $('.calendar-block').attr('data-part');
+    console.log('part', parseInt(part,10));
+    switch (parseInt(part,10)) {
+        case 1:
+            ytro();
+            break;
+        case 2:
+            den();
+            break;
+        case 3:
+            vecher();
+            break;
+    }
 }
-function cityNameEnd(){
-    var cityEnd = ['поль', 'ск', 'град', 'вилль', 'бург']
+// функция подключения функций выполяемых утром
+function ytro(){
+    console.log('ytro');
 }
-function countryNameEnd(){
-
+// функция подключения функций выполяемых днем
+function den() {
+    console.log('den');
 }
-
+// функция подключения функций выполяемых вечером
+function vecher(){
+    console.log('vecher');
+}
+// генерация имен (городов, стран, людей)
 function generateName(value) {
     var consonant_letter = ['б', 'в', 'г', 'д', 'ж', 'з', 'к', 'л', 'м', 'н', 'п', 'р', 'с', 'т', 'ф', 'х', 'ц', 'ч', 'ш'];
     var vowels_letter = ['а', 'е', 'и', 'о', 'у', 'э', 'ю', 'я'];
@@ -40,15 +60,17 @@ function generateName(value) {
             }
             content = content+consonant_letter[Math.floor(Math.random()*19)]+countryEnd[Math.floor(Math.random()*3)];
             break;
-        default:
+        case "human":
             for (i=0; i<Math.random()*2+1; i++){
                 content = content + slog();
             }
+            break;
     }
     content = content.charAt(0).toUpperCase() + content.substr(1);
     return content;
 }
 
+//генерация слогов//
 function slog() {
     var consonant_letter ={
         '3':'б', '11':'в', '14':'г', '19':'д', '21':'ж', '24':'з', '30':'к', '38':'л', '44':'м', '56':'н', '61':'п', '70':'р', '80':'с', '92':'т', '93':'ф', '95':'х', '96':'ц', '98':'ч', '99':'ш', '100':'щ'
@@ -73,11 +95,8 @@ function slog() {
     return letter1+letter2;
 }
 
+
 function addHuman(count) {
     // console.log('dobavit', count, '4elov' );
-    $.post('/addHuman',{
-        count: count
-    }, function (data) {
-        console.log('vjvo', data);
-    }, "json");
+
 }

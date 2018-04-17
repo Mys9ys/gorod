@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Ajax;
 
 use App\Human;
+use App\Human_skills;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Calendar;
@@ -16,6 +17,8 @@ class Reset extends Controller
         $res->update();
 
         $res = new Human();
+        $res->truncate();
+        $res = new Human_skills();
         $res->truncate();
     }
 }

@@ -39,3 +39,22 @@ input:focus {
   margin: 0 5px;
   display: inline-block;
 }
+.add_btn {
+  display: inline-block;
+  cursor: pointer;
+}
+.add_btn .fa-plus {
+  color: #9cc218;
+}
+.add_btn .hidden-title {
+  display: none;
+  color: #9cc218;
+}
+.add_btn .fa-stack {
+  display: inline-block;
+  border-radius: 50%;
+  box-shadow: 0px 2px 8px 0px rgba(40, 40, 40, 0.3);
+}
+.add_btn .fa-stack:active {
+  box-shadow: inset 0px 2px 8px 0px rgba(40, 40, 40, 0.3);
+}

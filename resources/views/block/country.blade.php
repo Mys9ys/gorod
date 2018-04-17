@@ -1,6 +1,6 @@
 <link href="{{ URL::asset('public/block/country/style.css') }}" rel="stylesheet" type="text/css">
 
-<div class="create_country">
+<div class="create_country add_btn">
     <span class="fa-stack">
         <i class="fa fa-plus fa-stack-1x" aria-hidden="true"></i>
         <i class="fa fa-circle-o fa-stack-2x" aria-hidden="true"></i>

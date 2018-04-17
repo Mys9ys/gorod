@@ -1,21 +1,16 @@
 $(document).ready(function () {
-    $('.create_country').mouseenter(function () {
-        $(this).find('.hidden-title').fadeIn(400);
-    });
-    $('.create_country').mouseenter(function () {
-        $(this).find('.hidden-title').fadeOut(400);
-    });
+
     // заложить страну
     $('.create_country').click(function () {
         $('#myModal').find('.modal-header').html('<span>Основать государство</span>');
         $('#myModal').find('.modal-body').html('' +
             '<div class="form-wrap">'+
-                '<input class="form-info country_name" data="country_name" type="text" placeholder="Название">'+
-                '<span class="form-title form_button country_generate">Сгенерировать</span>'+
+            '<input class="form-info country_name" data="country_name" type="text" placeholder="Название">'+
+            '<span class="form-title form_button country_generate">Сгенерировать</span>'+
             '</div>'+
             '<div class="form-wrap">'+
-                '<input class="form-info city_name" data="city_name" type="text" placeholder="Первый город">'+
-                '<span class="form-title form_button city_generate">Сгенерировать</span>'+
+            '<input class="form-info city_name" data="city_name" type="text" placeholder="Первый город">'+
+            '<span class="form-title form_button city_generate">Сгенерировать</span>'+
             '</div>'
         );
         $('#myModal').find('.modal-footer').html('<button class="add_country">Подтвердить</button>');

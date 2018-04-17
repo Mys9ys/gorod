@@ -1,6 +1,6 @@
 @include('layouts.header')
 <div class="container">
-
+    {{--<hero></hero>--}}
     <?$tabNumber=1;?>
     <ul class="nav nav-tabs">
         <li><a data-toggle="tab" href="#panel<?=$tabNumber++;?>">Меню</a></li>
@@ -35,10 +35,11 @@
         </div>
         <div id="panel<?=$panelNumber++;?>" class="tab-pane fade">
             <h3>Население</h3>
+            @include('block.human')
         </div>
         <div id="panel<?=$panelNumber++;?>" class="tab-pane fade">
             <h3>Компании</h3>
-            <p>Содержимое <?=$panelNumber?> панели...</p>
+            <div class="company_box"></div>
         </div>
         <div id="panel<?=$panelNumber++;?>" class="tab-pane fade">
             <h3>Панель <?=$panelNumber?></h3>
