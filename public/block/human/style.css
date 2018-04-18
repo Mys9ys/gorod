@@ -6,3 +6,33 @@
   margin: 3px;
   border-radius: 3px;
 }
+.human_box {
+  display: inline-block;
+  border: 1px solid #2e6da4;
+  border-radius: 3px;
+  width: 65px;
+  font-size: 12px;
+  line-height: 12px;
+  margin: 3px;
+  box-shadow: 0px 2px 8px 0px #2e6da4;
+}
+.human_box .human_name {
+  display: inline-block;
+  padding: 3px 10px;
+}
+.human_box .human_info {
+  display: inline-block;
+}
+.human_box .human_info .fa {
+  padding: 0px 5px;
+}
+.human_box .human_info .human_money {
+  display: inline-block;
+  width: 100%;
+}
+.human_box .human_info .human_money .human_money_count {
+  padding: 0px 6px;
+  background: #d6e9c6;
+  border: 1px solid #3c763d;
+  border-radius: 3px;
+}

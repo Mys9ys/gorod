@@ -6,5 +6,22 @@
     </span>
     <span class="hidden-title">Добавить человечков</span>
 </div>
+<?$arHumans = \App\Human::all();?>
+<?//dd()?>
+<div class="container">
+    <?foreach($arHumans as $arHuman){?>
+        <div class="human_box">
+            <div class="human_name"><?=$arHuman->name?></div>
+            <div class="human_info">
+                <div class="human_money">
+                    <i class="fa fa-money left" aria-hidden="true"></i>
+                    <div class="human_money_count left"><?=$arHuman->money?></div>
+                </div>
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+                <i class="fa fa-id-badge" aria-hidden="true"></i>
+            </div>
+        </div>
+    <?}?>
+</div>
 
 <script src="{{ URL::asset('public/block/human/script.js') }}"></script>
