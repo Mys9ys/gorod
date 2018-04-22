@@ -39,7 +39,7 @@
         </div>
         <div id="panel<?=$panelNumber++;?>" class="tab-pane fade">
             <h3>Компании</h3>
-            <div class="company_box"></div>
+            @include('block.company')
         </div>
         <div id="panel<?=$panelNumber++;?>" class="tab-pane fade">
             <h3>Панель <?=$panelNumber?></h3>

@@ -15,6 +15,8 @@ class VerifyCsrfToken extends BaseVerifier
         '/addHuman',
         '/setCountry',
         '/ajaxCalendar',
+        '/getCompanySector',
+        '/addNewCompany',
         '/reset',
     ];
 }

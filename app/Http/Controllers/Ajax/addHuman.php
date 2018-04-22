@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Ajax;
 
+use App\Calendar;
 use App\Human;
 use App\Human_skills;
 use Illuminate\Http\Request;
@@ -19,6 +20,7 @@ class addHuman extends Controller
             foreach ($arHumans as $human){
                 $res = new Human();
                 $res->name=$human;
+                $res->born_date=Calendar::pluck('countDay')->first();
                 $res->save();
                 $skill = new Human_skills();
                 $skill->skill=0;

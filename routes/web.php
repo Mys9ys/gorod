@@ -33,3 +33,5 @@ Route::post('/companyLibUpdate', 'Ajax\companyLib@update'); // установк�
 Route::post('/companyLibDelete', 'Ajax\companyLib@delete'); // установка компании в библиотеку
 
 Route::post('/setCountry', 'Ajax\setInfo@addCountry'); // создание государства
+Route::post('/getCompanySector', 'Ajax\AjaxCompany@getSector'); // запрос секторов экономики и шаблонов компаний
+Route::post('/addNewCompany', 'Ajax\AjaxCompany@addNewCompany'); // сохранение новой компании
