@@ -12,8 +12,32 @@
     <?foreach($arCompanies as $arCompany){?>
     <div class="company_box">
         <div class="company_name"><?=$arCompany->name?></div>
+        <div class="company_info">
+            <div class="company_money">
+                <i class="fa fa-money left" aria-hidden="true"></i>
+                <div class="company_money_count left"><?=$arCompany->money?></div>
+                <div class="company_frofit left"><?=$arCompany->frofit?></div>
+            </div>
+            <div class="company_worker">
+                <div class="worker_contain left">
+                    <?for($i=0;$i<$arCompany->workplace;$i++){?>
+                        <i class="fa fa-user-o left" aria-hidden="true"></i>
+                    <?}?>
+                </div>
+                <div class="add_worker left">+</div>
+            </div>
+            <div class="company_material">
+                <div class="material_name left">material</div>
+                <i class="fa fa-th-large left" aria-hidden="true"></i>
+                <div class="material_percent">25%</div>
+            </div>
+            <div class="company_product">
+                <div class="product_name left">product</div>
+                <i class="fa fa-th-large left" aria-hidden="true"></i>
+                <div class="product_count">шт.</div>
+            </div>
+        </div>
     </div>
-
     <?}?>
 </div>
 

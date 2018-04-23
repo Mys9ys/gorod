@@ -30,14 +30,14 @@
                 <button class="reset">Reset</button>
             </div>
         </div>
-        <div id="panel<?=$panelNumber++;?>" class="tab-pane fade in active">
+        <div id="panel<?=$panelNumber++;?>" class="tab-pane fade ">
             @include('block.country')
         </div>
         <div id="panel<?=$panelNumber++;?>" class="tab-pane fade">
             <h3>Население</h3>
             @include('block.human')
         </div>
-        <div id="panel<?=$panelNumber++;?>" class="tab-pane fade">
+        <div id="panel<?=$panelNumber++;?>" class="tab-pane fade in active">
             <h3>Компании</h3>
             @include('block.company')
         </div>
