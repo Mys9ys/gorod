@@ -11,6 +11,16 @@ $(document).ready(function () {
     $('.add_btn').on('mouseenter mouseleave',function () {
         $(this).find('.hidden-title').fadeToggle(400);
     });
+    // обработчики событий для всплывающего окна select <--- BEGIN
+    $('.select_wrap').on('click', '.select_close', function () {
+        console.log('mi tyt');
+        $(this).parent().parent().hide();
+    });
+    $('.select_wrap').on('click', '.select_box_add_button', function () {
+        console.log('mi tyt', $(this).data('itemid'));
+    });
+
+    // обработчики событий для всплывающего окна select <--- END
 });
 // функция вызова функции на часть дня
 function partDays() {
@@ -94,4 +104,15 @@ function slog() {
     });
     return letter1+letter2;
 }
+//функция оплаты человек-фирма
+function HumanToCompanyPay(human, company, count) {
 
+}
+//функция оплаты фирма-человек
+function CompanyToHumanPay(company, human, count) {
+
+}
+//функция оплаты фирма-фирма
+function CompanyToCompanyPay(company1, company2, count) {
+
+}

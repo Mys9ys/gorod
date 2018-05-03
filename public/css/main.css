@@ -26,6 +26,9 @@ input:focus {
   display: inline-block;
   float: right;
 }
+.clr {
+  clear: both;
+}
 .country_icon,
 .city_icon {
   position: relative;
@@ -57,4 +60,91 @@ input:focus {
 }
 .add_btn .fa-stack:active {
   box-shadow: inset 0px 2px 8px 0px rgba(40, 40, 40, 0.3);
+}
+.select_box {
+  display: inline-block;
+  position: absolute;
+  background: #ffffff;
+}
+.select_box .select_panel {
+  position: relative;
+}
+.select_box .select_panel .select_close {
+  display: inline-block;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 20px;
+  height: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 14px;
+  text-align: center;
+  border: 2px solid #2e6da4;
+  border-radius: 50%;
+  padding-bottom: 5px;
+  background: #ffffff;
+  transform: rotate(45deg);
+  cursor: pointer;
+}
+.select_box .select_container {
+  display: inline-block;
+  border: 1px solid #2e6da4;
+  border-radius: 3px;
+  padding-right: 2px;
+  box-shadow: 0px 2px 8px 0px #2e6da4;
+  height: 200px;
+  overflow: scroll;
+}
+.select_box .item_wrap {
+  width: 135px;
+}
+.select_box .item_name {
+  padding: 2px 3px;
+  width: 50px;
+}
+.select_box .item_condition {
+  padding: 2px 3px;
+  width: 65px;
+}
+.select_box .select_box_add_button {
+  border: 1px solid #3c763d;
+  font-size: 14px;
+  line-height: 14px;
+  vertical-align: middle;
+  font-weight: 900;
+  margin-top: 3px;
+  margin-right: 3px;
+  padding: 0px 2px 2px 2px;
+  border-radius: 5px;
+  color: #3c763d;
+  cursor: pointer;
+}
+.select_box .select_box_add_button:hover {
+  background: #3c763d;
+  color: #ffffff;
+}
+.select_container::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+.select_container::-webkit-scrollbar-button {
+  background-color: rgba(46, 109, 164, 0.7);
+}
+.select_container::-webkit-scrollbar-track {
+  background-color: rgba(46, 109, 164, 0.7);
+}
+.select_container::-webkit-scrollbar-track-piece {
+  background-color: #ffffff;
+}
+.select_container::-webkit-scrollbar-thumb {
+  height: 20px;
+  background-color: #2e6da4;
+  border-radius: 3px;
+}
+.select_container::-webkit-scrollbar-corner {
+  background-color: rgba(46, 109, 164, 0.5);
+}
+.select_container::-webkit-resizer {
+  background-color: rgba(46, 109, 164, 0.7);
 }

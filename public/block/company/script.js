@@ -44,7 +44,6 @@ $(document).ready(function () {
     $('#myModal').on('click', '.add_company', function () {
         var flag = true;
        // var count = $('.modal-body').find('*[data-form=""]').val();
-        console.log('mi tyt');
         var data = {};
         $('.modal-body').find('*[data-form]').each(function () {
             if($(this).val()!=''){
@@ -65,4 +64,12 @@ $(document).ready(function () {
         }
 
     });
+    var select = $('.select_box').clone();
+    $('.add_worker').click(function () {
+        $(this).parent().parent().parent().find('.select_wrap').append(select).show(400);
+    });
 });
+
+function addWorker(companyID) {
+
+}
