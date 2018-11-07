@@ -31,6 +31,10 @@
     <div class="container">
         <div class="navbar-header">
 
+            <?require_once public_path().'/functions/fist_half_day.php';?>
+
+            <?fist_half_day()?>
+
             <!-- Branding Image -->
             <div class="navbar-brand">
                 <?if(isset($_COOKIE['CountryID'])){
