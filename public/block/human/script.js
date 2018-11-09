@@ -18,10 +18,15 @@ $(document).ready(function () {
         $('#myModal').find('.human_alert').remove();
         var count = parseInt($(this).parent().find('.human_count').val(),10);
         if(count){
-
             for(var i=0;i<count;i++){
-                data[i]=generateName('human');
-                $('#myModal').find('.modal-body').append('<div class="human_prewiev">'+data[i]+'</div>');
+                var item = {
+                    name: '',
+                    city: ''
+                };
+                item['name'] = generateName('human');
+                item['city'] = $.cookie('CityID');
+                data[i] = item;
+                $('#myModal').find('.modal-body').append('<div class="human_prewiev">'+data[i]['name']+'</div>');
             }
         } else {
             $('#myModal').find('.modal-body').append('<span class="btn-danger alert-danger human_alert">Введите количество</span>');

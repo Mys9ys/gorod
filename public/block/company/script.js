@@ -58,6 +58,7 @@ $(document).ready(function () {
                 '/addNewCompany',
                 data,
                 function (result) {
+                    $('#myModal').find('.modal-footer').hide();
                     $('#myModal').find('.modal-body').html('<span class="alert-success">'+jQuery.parseJSON(result)+'</span>');
                 }
             );

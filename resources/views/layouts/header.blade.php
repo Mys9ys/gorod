@@ -31,31 +31,40 @@
     <div class="container">
         <div class="navbar-header">
 
-            <?require_once public_path().'/functions/fist_half_day.php';?>
+            <!--            --><?//require_once public_path().'/functions/fist_half_day.php';?>
 
-            <?fist_half_day()?>
+        <!--            --><?//fist_half_day()?>
 
-            <!-- Branding Image -->
+        <!--            --><?//dd($_COOKIE['CountryID'])?>
+        <!-- Branding Image -->
             <div class="navbar-brand">
                 <?if(isset($_COOKIE['CountryID'])){
-                    $country = \App\Country::find($_COOKIE['CountryID']);?>
-                    <img class="country_icon left" src="public/image/country_icon.jpg" alt="">
-                    <div class="CountryID left" data="<?=$country->id;?>"><?=$country->name;?></div>
-                    <?if(isset($_COOKIE['CityID'])){
-                        $city = \App\City::find($_COOKIE['CityID']);?>
-                        <i class="fa fa-angle-right left" aria-hidden="true"></i>
-                        <img class="city_icon left" src="public/image/city_icon.jpg" alt="">
-                        <div class="CityID left" data="<?=$city->id;?>"><?=$city->name;?></div>
-                    <?}?>
+                $country = \App\Country::find($_COOKIE['CountryID']);?>
+                <img class="country_icon left" src="public/image/country_icon.jpg" alt="">
+                <div class="CountryID left" data="<?=$country->id;?>"><?=$country->name;?></div>
+
+                <?} else { ?>
+
+                <? }?>
+                <?if(isset($_COOKIE['CityID'])){
+                $city = \App\City::find($_COOKIE['CityID']);?>
+                <i class="fa fa-angle-right left" aria-hidden="true"></i>
+                <img class="city_icon left" src="public/image/city_icon.jpg" alt="">
+                <div class="CityID left" data="<?=$city->id;?>"><?=$city->name;?></div>
                 <?}?>
             </div>
         </div>
 
+
         <div class="collapse navbar-collapse" id="app-navbar-collapse">
             <!-- Left Side Of Navbar -->
             <ul class="nav navbar-nav">
-                &nbsp;
+                &nbsp;<li class="nav-item ">
+                    <a class="nav-link menu_btn" href="javascript:void(0)">Menu</a>
+                </li>
+
             </ul>
+
 
             <!-- Right Side Of Navbar -->
             <ul class="nav navbar-nav navbar-right">
@@ -64,3 +73,58 @@
         </div>
     </div>
 </nav>
+<div class="container">
+    <div class="menu_container">
+        <?$tabNumber=1;?>
+        <ul class="nav nav-tabs">
+            <li><a data-toggle="tab" href="#panel<?=$tabNumber++;?>">Меню</a></li>
+            <li class="active"><a data-toggle="tab" href="#panel<?=$tabNumber++;?>">Государство</a></li>
+            <li><a data-toggle="tab" href="#panel<?=$tabNumber++;?>">Население</a></li>
+            <li><a data-toggle="tab" href="#panel<?=$tabNumber++;?>">Компании</a></li>
+            <li class="dropdown">
+                <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                    Другие панели
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a data-toggle="tab" href="#panel<?=$tabNumber++;?>">Панель <?=$tabNumber?></a></li>
+                    <li><a data-toggle="tab" href="#panel<?=$tabNumber++;?>">Панель <?=$tabNumber?></a></li>
+                </ul>
+            </li>
+        </ul>
+        <?$panelNumber = 1;?>
+        <div class="tab-content">
+            <div id="panel<?=$panelNumber++;?>" class="tab-pane fade">
+                <h3>Меню</h3>
+                <div class="gameMenuButton">
+                    <button class="startGame">Начать игру</button>
+                    <a href="/setting">
+                        <button class="gameSettings">Настройки</button>
+                    </a>
+                    <button class="addHuman">Добавить человечков</button>
+                    <button class="reset">Reset</button>
+                </div>
+            </div>
+            <div id="panel<?=$panelNumber++;?>" class="tab-pane fade ">
+                @include('block.country')
+            </div>
+            <div id="panel<?=$panelNumber++;?>" class="tab-pane fade">
+                <h3>Население</h3>
+                @include('block.human')
+            </div>
+            <div id="panel<?=$panelNumber++;?>" class="tab-pane fade in active">
+                <h3>Компании</h3>
+                @include('block.company')
+            </div>
+            <div id="panel<?=$panelNumber++;?>" class="tab-pane fade">
+                <h3>Панель <?=$panelNumber?></h3>
+                <p>Содержимое <?=$panelNumber?> панели...</p>
+            </div>
+
+            <div id="panel<?=$panelNumber++;?>" class="tab-pane fade">
+                <h3>Панель <?=$panelNumber?></h3>
+                <p>Содержимое <?=$panelNumber?> панели...</p>
+            </div>
+        </div>
+    </div>
+</div>

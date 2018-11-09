@@ -21,6 +21,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/main', 'MainController@index')->name('main');
 Route::get('/setting', 'SettingController@index')->name('setting');
+Route::get('/map', 'MapController@index')->name('map');
 
 //Route::post('/ajaxRequest', 'Ajax\AjaxController@send');
 

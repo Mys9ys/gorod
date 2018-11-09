@@ -8,6 +8,11 @@ $(document).ready(function () {
             }
         });
     });
+    //вывод меню
+    $('.menu_btn').click(function () {
+       $('.menu_container').toggle();
+    });
+
     $('.add_btn').on('mouseenter mouseleave',function () {
         $(this).find('.hidden-title').fadeToggle(400);
     });
