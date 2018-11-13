@@ -1,4 +1,13 @@
 $(document).ready(function () {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $('.gosZP').click(function(){
+
+    });
+
     // сброс базы на 0
     $('.reset').click(function () {
         $.post({
@@ -109,15 +118,23 @@ function slog() {
     });
     return letter1+letter2;
 }
-//функция оплаты человек-фирма
-function HumanToCompanyPay(human, company, count) {
 
+// платежи с запросом через аякс
+function paymentFunc(seller, sellerID, buyer, buyerID, money) {
+    data = {
+        seller:seller,
+        sellerID:sellerID,
+        buyer:buyer,
+        buyerID:buyerID,
+        money:money
+    };
+    $.post({
+        url: '/pays',
+        data:data,
+        success: function(result){
+            console.log('result', result);
+        }
+    });
 }
-//функция оплаты фирма-человек
-function CompanyToHumanPay(company, human, count) {
 
-}
-//функция оплаты фирма-фирма
-function CompanyToCompanyPay(company1, company2, count) {
 
-}
