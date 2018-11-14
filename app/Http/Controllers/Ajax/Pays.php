@@ -13,44 +13,29 @@ use App\Http\Controllers\Controller;
 class Pays extends Controller
 {
     public function PayCommand(Request $request){
-//        dd($request->all());
 
-
-        $seller = partnerPay($request->seller, $request->sellerID);
         $buyer = partnerPay($request->buyer, $request->buyerID);
-
-        $verify_money = $buyer->money-$request->money;
-        if($verify_money>0){
-            $buyer->money = $verify_money;
+        $buyer->money = $buyer->money-$request->money;
+        if($buyer->save()){
+            $seller = partnerPay($request->seller, $request->sellerID);
             $seller->money = $seller->money+$request->money;
+            if($seller->save()){
+                $transaction = new Transactions();
+                $transaction->seller=$request->sellerID;
+                $transaction->buyer=$request->buyerID;
+                $transaction->pay_data=Calendar::pluck('countDay')->first();
+                $transaction->count=$request->money;
+                if($transaction->save()){
 
-
-            $transaction = new Transactions();
-            $transaction->seller=$request->sellerID;
-            $transaction->buyer=$request->buyerID;
-            $transaction->pay_data=Calendar::pluck('countDay')->first();
-            $transaction->count=$request->money;
-
-            $transaction->save();
-            $seller->save();
-            $buyer->save();
+                }  else {
+                    echo 'что то пошло не так $transaction';
+                }
+            }  else {
+                echo 'что то пошло не так $seller';
+            }
         } else {
-            echo 'low_money';
+            echo 'что то пошло не так $buyer';
         }
-
-
-
-
-        $payArray = array(
-            'HumanToHumanPay',
-            'CompanyToCompanyPay',
-            'CompanyToHumanPay',
-            'HumanToCompanyPay',
-            'TreasuryToHumanPay',
-            'CompanyToTreasuryPay',
-            'TreasuryToCompany',
-        );
-
     }
 }
 

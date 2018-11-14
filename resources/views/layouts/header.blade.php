@@ -119,8 +119,8 @@
             <div id="panel<?=$panelNumber++;?>" class="tab-pane fade">
                 <h3>Панель <?=$panelNumber?></h3>
                 <p>Содержимое <?=$panelNumber?> панели...</p>
-                <button class="zm9k">zm9k</button>
-                <button class="gosZP">gosZP</button>
+                <button class="zm9k">zm9k</button><br>
+                <button class="gosZP" data-city="<?=$_COOKIE['CityID']?>" data-country="<?=$_COOKIE['CountryID']?>">gosZP</button>
             </div>
 
             <div id="panel<?=$panelNumber++;?>" class="tab-pane fade">

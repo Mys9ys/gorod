@@ -25,6 +25,7 @@ $(document).ready(function () {
                 };
                 item['name'] = generateName('human');
                 item['city'] = $.cookie('CityID');
+                item['country'] = $.cookie('CountryID');
                 data[i] = item;
                 $('#myModal').find('.modal-body').append('<div class="human_prewiev">'+data[i]['name']+'</div>');
             }

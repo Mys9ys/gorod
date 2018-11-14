@@ -18,7 +18,6 @@ class addHuman extends Controller
 //        $letter3 = ['А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ж', 'З', 'И', 'Й', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Р', 'С', 'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Ы', 'Э', 'Ю', 'Я'];
 
         foreach ($request->all() as $arHumans){
-            dd($_COOKIE);
             $country = Country::find($_COOKIE['CountryID']);
             $country->population=count($arHumans);
             $country->save();
@@ -26,6 +25,7 @@ class addHuman extends Controller
                 $res = new Human();
                 $res->name=$human['name'];
                 $res->born_city=$human['city'];
+                $res->born_country=$human['country'];
                 $res->born_date=Calendar::pluck('countDay')->first();
                 $res->save();
                 $skill = new Human_skills();

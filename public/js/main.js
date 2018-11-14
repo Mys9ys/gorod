@@ -5,7 +5,16 @@ $(document).ready(function () {
         }
     });
     $('.gosZP').click(function(){
-
+        var data = {
+            employer: {
+                buyer: 'Treasury',
+                buyerID: $(this).data('country')
+            },
+            money: 20,
+            target: 'jobless'
+        };
+        payday(data);
+        console.log('mi tyt', data);
     });
 
     // сброс базы на 0
@@ -121,7 +130,7 @@ function slog() {
 
 // платежи с запросом через аякс
 function paymentFunc(seller, sellerID, buyer, buyerID, money) {
-    data = {
+    var data = {
         seller:seller,
         sellerID:sellerID,
         buyer:buyer,
@@ -137,4 +146,32 @@ function paymentFunc(seller, sellerID, buyer, buyerID, money) {
     });
 }
 
+//выплата зарплаты(пособия)
+function payday(arrPay) {
+    console.log('arrPay', arrPay);
+    if(arrPay['target'] == 'jobless'){
+        var data = {
+            props1:{
+                name:'job',
+                value: 0
+            },
+            props2:{
+                name:'born_country',
+                value: arrPay['employer']['buyerID']
+            }
+        }
+    }
+    $.post({
+        url: '/getHumanCountry',
+        data:data,
+        success: function(result){
+            console.log('result', JSON.parse(result));
+            $.each(JSON.parse(result), function (i, value) {
+                console.log('i', i, 'value', value);
+                paymentFunc('Human', value, arrPay['employer']['buyer'],arrPay['employer']['buyerID'], arrPay['money']);
+            })
+        }
+    });
+    console.log('data', data);
+}
 
