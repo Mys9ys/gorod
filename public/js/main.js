@@ -4,6 +4,10 @@ $(document).ready(function () {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
+
+    $('.CitySelect').click(function () {
+       console.log($(this).data('city'));
+    });
     $('.gosZP').click(function(){
         var data = {
             employer: {
@@ -137,13 +141,37 @@ function paymentFunc(seller, sellerID, buyer, buyerID, money) {
         buyerID:buyerID,
         money:money
     };
-    $.post({
-        url: '/pays',
-        data:data,
-        success: function(result){
-            console.log('result', result);
-        }
-    });
+
+
+    if(sellerID.length>1){
+        $.post({
+            url: '/paysOTM',
+            data:data,
+            success: function(result){
+                console.log('result', result);
+            }
+        });
+    }
+
+    if(buyerID.length>1){
+        $.post({
+            url: '/paysMTO',
+            data:data,
+            success: function(result){
+                console.log('result', result);
+            }
+        });
+    }
+
+    if($.isNumeric(sellerID)&&$.isNumeric(buyerID)){
+        $.post({
+            url: '/paysOTO',
+            data:data,
+            success: function(result){
+                console.log('result', result);
+            }
+        });
+    }
 }
 
 //выплата зарплаты(пособия)
@@ -165,13 +193,8 @@ function payday(arrPay) {
         url: '/getHumanCountry',
         data:data,
         success: function(result){
-            console.log('result', JSON.parse(result));
-            $.each(JSON.parse(result), function (i, value) {
-                console.log('i', i, 'value', value);
-                paymentFunc('Human', value, arrPay['employer']['buyer'],arrPay['employer']['buyerID'], arrPay['money']);
-            })
+            paymentFunc('Human', JSON.parse(result), arrPay['employer']['buyer'],arrPay['employer']['buyerID'], arrPay['money']);
         }
     });
-    console.log('data', data);
 }
 

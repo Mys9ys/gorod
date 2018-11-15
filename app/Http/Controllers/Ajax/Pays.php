@@ -12,7 +12,7 @@ use App\Http\Controllers\Controller;
 
 class Pays extends Controller
 {
-    public function PayCommand(Request $request){
+    public function PayOneToOne(Request $request){
 
         $buyer = partnerPay($request->buyer, $request->buyerID);
         $buyer->money = $buyer->money-$request->money;
@@ -35,6 +35,40 @@ class Pays extends Controller
             }
         } else {
             echo 'что то пошло не так $buyer';
+        }
+    }
+    public function PayManyToOne(Request $request){
+        $seller = partnerPay($request->seller, $request->sellerID);
+        $seller->money = $seller->money+$request->money*count($request->buyerID);
+        if($seller->save()){
+            foreach ($request->buyerID as $buyerID){
+                $buyer = partnerPay($request->buyer, $buyerID);
+                $buyer->money = $buyer->money-$request->money;
+                $buyer->save();
+                $transaction = new Transactions();
+                $transaction->seller=$request->sellerID;
+                $transaction->buyer=$buyerID;
+                $transaction->pay_data=Calendar::pluck('countDay')->first();
+                $transaction->count=$request->money;
+                $transaction->save();
+            }
+        }
+    }
+    public function PayOneToMany(Request $request){
+        $buyer = partnerPay($request->buyer, $request->buyerID);
+        $buyer->money = $buyer->money-($request->money)*count($request->sellerID);
+        if($buyer->save()){
+            foreach ($request->sellerID as $sellerID){
+                $seller = partnerPay($request->seller, $sellerID);
+                $seller->money = $seller->money+$request->money;
+                $seller->save();
+                $transaction = new Transactions();
+                $transaction->seller=$sellerID;
+                $transaction->buyer=$request->buyerID;
+                $transaction->pay_data=Calendar::pluck('countDay')->first();
+                $transaction->count=$request->money;
+                $transaction->save();
+            }
         }
     }
 }

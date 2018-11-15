@@ -38,20 +38,24 @@
         <!--            --><?//dd($_COOKIE['CountryID'])?>
         <!-- Branding Image -->
             <div class="navbar-brand">
-                <?if(isset($_COOKIE['CountryID'])){
-                $country = \App\Country::find($_COOKIE['CountryID']);?>
                 <img class="country_icon left" src="public/image/country_icon.jpg" alt="">
-                <div class="CountryID left" data="<?=$country->id;?>"><?=$country->name;?></div>
-
-                <?} else { ?>
-
+                <?if(isset($_COOKIE['CountryID'])){
+                    $country = \App\Country::find($_COOKIE['CountryID']);?>
+                    <div class="CountryID left" data="<?=$country->id;?>"><?=$country->name;?></div>
+                <?} else {
+                    $country = \App\Country::all();?>
+                    <?dd($country)?>
                 <? }?>
+
                 <?if(isset($_COOKIE['CityID'])){
                 $city = \App\City::find($_COOKIE['CityID']);?>
                 <i class="fa fa-angle-right left" aria-hidden="true"></i>
                 <img class="city_icon left" src="public/image/city_icon.jpg" alt="">
                 <div class="CityID left" data="<?=$city->id;?>"><?=$city->name;?></div>
-                <?}?>
+                <?}else {
+                    $city = \App\City::all();?>
+                    <div class="CitySelect" data-city="<?=$city?>">Выбрать</div>
+                <? }?>
             </div>
         </div>
 
@@ -120,7 +124,7 @@
                 <h3>Панель <?=$panelNumber?></h3>
                 <p>Содержимое <?=$panelNumber?> панели...</p>
                 <button class="zm9k">zm9k</button><br>
-                <button class="gosZP" data-city="<?=$_COOKIE['CityID']?>" data-country="<?=$_COOKIE['CountryID']?>">gosZP</button>
+
             </div>
 
             <div id="panel<?=$panelNumber++;?>" class="tab-pane fade">

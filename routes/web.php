@@ -32,7 +32,11 @@ Route::post('/companyLibGet', 'Ajax\companyLib@get'); // получение сп
 Route::post('/companyLibSet', 'Ajax\companyLib@set'); // установка компании в библиотеку
 Route::post('/companyLibUpdate', 'Ajax\companyLib@update'); // установка компании в библиотеку
 Route::post('/companyLibDelete', 'Ajax\companyLib@delete'); // установка компании в библиотеку
-Route::post('/pays', 'Ajax\Pays@PayCommand'); // платежи аякс
+
+Route::post('/paysOTO', 'Ajax\Pays@PayOneToOne'); // платежи аякс
+Route::post('/paysMTO', 'Ajax\Pays@PayManyToOne'); // платежи аякс
+Route::post('/paysOTM', 'Ajax\Pays@PayOneToMany'); // платежи аякс
+
 Route::post('/getHumanCountry', 'Ajax\getHumanCountry@request'); // выбрать всех жителей страны
 
 Route::post('/setCountry', 'Ajax\setInfo@addCountry'); // создание государства
