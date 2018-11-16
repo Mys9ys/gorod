@@ -42,20 +42,21 @@
                 <?if(isset($_COOKIE['CountryID'])){
                     $country = \App\Country::find($_COOKIE['CountryID']);?>
                     <div class="CountryID left" data="<?=$country->id;?>"><?=$country->name;?></div>
+                        <i class="fa fa-angle-right left" aria-hidden="true"></i>
+                        <img class="city_icon left" src="public/image/city_icon.jpg" alt="">
+                        <?if(isset($_COOKIE['CityID'])){
+                        $city = \App\City::find($_COOKIE['CityID']);?>
+                        <div class="CityCheck CityID left" data-country="<?=$country->id;?>" data-id="<?=$city->id;?>"><?=$city->name;?></div>
+                    <?}else{?>
+                        <div class="CityCheck left CityID" data-country="<?=$country->id;?>">Выбрать</div>
+                    <?}?>
+                        <div class="CitySelect"></div>
                 <?} else {
                     $country = \App\Country::all();?>
                     <?dd($country)?>
                 <? }?>
 
-                <?if(isset($_COOKIE['CityID'])){
-                $city = \App\City::find($_COOKIE['CityID']);?>
-                <i class="fa fa-angle-right left" aria-hidden="true"></i>
-                <img class="city_icon left" src="public/image/city_icon.jpg" alt="">
-                <div class="CityID left" data="<?=$city->id;?>"><?=$city->name;?></div>
-                <?}else {
-                    $city = \App\City::all();?>
-                    <div class="CitySelect" data-city="<?=$city?>">Выбрать</div>
-                <? }?>
+
             </div>
         </div>
 

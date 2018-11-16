@@ -27,6 +27,23 @@ fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, 
 .CountryID, .CityID{
   margin: 0 5px;
   display: inline-block;
+  cursor: pointer;
+}
+.CitySelect{
+  display: none;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background: rgb(255,255,255);
+  padding: 3px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  .CitySelectItem{
+    cursor: pointer;
+  }
+  .CitySelectItem:hover{
+    color: rgb(156, 194, 24);
+  }
 }
 .add_btn{
   display: inline-block;

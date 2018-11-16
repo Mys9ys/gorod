@@ -38,6 +38,7 @@ Route::post('/paysMTO', 'Ajax\Pays@PayManyToOne'); // платежи аякс
 Route::post('/paysOTM', 'Ajax\Pays@PayOneToMany'); // платежи аякс
 
 Route::post('/getHumanCountry', 'Ajax\getHumanCountry@request'); // выбрать всех жителей страны
+Route::post('/getCityCountry', 'Ajax\getCityCountry@request'); // выбрать всех жителей страны
 
 Route::post('/setCountry', 'Ajax\setInfo@addCountry'); // создание государства
 Route::post('/getCompanySector', 'Ajax\AjaxCompany@getSector'); // запрос секторов экономики и шаблонов компаний

@@ -98,6 +98,23 @@ button {
 .CityID {
   margin: 0 5px;
   display: inline-block;
+  cursor: pointer;
+}
+.CitySelect {
+  display: none;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background: #ffffff;
+  padding: 3px;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+.CitySelect .CitySelectItem {
+  cursor: pointer;
+}
+.CitySelect .CitySelectItem:hover {
+  color: #9cc218;
 }
 .add_btn {
   display: inline-block;

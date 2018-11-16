@@ -5,8 +5,26 @@ $(document).ready(function () {
         }
     });
 
-    $('.CitySelect').click(function () {
-       console.log($(this).data('city'));
+    $('.CityCheck').click(function () {
+        $('.CitySelect').children().remove();
+        $('.CitySelect').css('left', $('.city_icon').offset().left);
+        $.post({
+            url: '/getCityCountry',
+            data:{country:$(this).data('country')},
+            success: function(result){
+                $.each(JSON.parse(result), function (key,value) {
+                    $('.CitySelect').append('<div class="CitySelectItem" data-id="'+value+'">'+key+'</div>');
+                });
+                $('.CitySelect').show();
+            }
+        });
+    });
+    $('.CitySelect').on('click', '.CitySelectItem', function () {
+        $.cookie('CityID', $(this).data('id'), {
+            expires: 365,
+            path: '/'
+        });
+        location.reload();
     });
     $('.gosZP').click(function(){
         var data = {
