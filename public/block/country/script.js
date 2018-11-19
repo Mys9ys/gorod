@@ -46,24 +46,13 @@ $(document).ready(function () {
                 data,
                 function (result) {
                     console.log('result', result);
+                    $('#myModal').find('.modal-body').remove();
+                    $('#myModal').find('.modal-header').html('<p>Государство создано</p>');
+                    $('#myModal').find('.modal-footer').html('<p>Закрыть</p>');
                 }
             );
         }
     });
-    //Выбор страны для отображения
-    $('.country-button').click(function () {
-        $.cookie('CountryID', $(this).data('id'), {
-            expires: 365,
-            path: '/'
-        });
-        location.reload();
-    });
-    $('.city-button').click(function () {
-        $.cookie('CityID', $(this).data('id'), {
-            expires: 365,
-            path: '/'
-        });
-        location.reload();
-    });
+
 
 });

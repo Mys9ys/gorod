@@ -5,6 +5,24 @@ $(document).ready(function () {
         }
     });
 
+    //выбор страны
+    $('.CountryID').on('click', function () {
+        $('.CountrySelect').css('left', $('.country_icon').offset().left);
+        $('.CountrySelect').show();
+    });
+    $('.CountrySelect').on('click', '.CountrySelectItem', function () {
+        $.cookie('CountryID', $(this).data('id'), {
+            expires: 365,
+            path: '/'
+        });
+        $.cookie('CityID', null ,{
+            expires: -1,
+            path: '/'
+        });
+        location.reload();
+    });
+
+    //выбор города
     $('.CityCheck').click(function () {
         $('.CitySelect').children().remove();
         $('.CitySelect').css('left', $('.city_icon').offset().left);
@@ -13,7 +31,7 @@ $(document).ready(function () {
             data:{country:$(this).data('country')},
             success: function(result){
                 $.each(JSON.parse(result), function (key,value) {
-                    $('.CitySelect').append('<div class="CitySelectItem" data-id="'+value+'">'+key+'</div>');
+                    $('.CitySelect').append('<div class="CitySelectItem HeaderSelectItem" data-id="'+value+'">'+key+'</div>');
                 });
                 $('.CitySelect').show();
             }
@@ -26,6 +44,7 @@ $(document).ready(function () {
         });
         location.reload();
     });
+
     $('.gosZP').click(function(){
         var data = {
             employer: {

@@ -39,6 +39,7 @@
         <!-- Branding Image -->
             <div class="navbar-brand">
                 <img class="country_icon left" src="public/image/country_icon.jpg" alt="">
+<!--                --><?//dd('mi tyt')?>
                 <?if(isset($_COOKIE['CountryID'])){
                     $country = \App\Country::find($_COOKIE['CountryID']);?>
                     <div class="CountryID left" data="<?=$country->id;?>"><?=$country->name;?></div>
@@ -50,11 +51,16 @@
                     <?}else{?>
                         <div class="CityCheck left CityID" data-country="<?=$country->id;?>">Выбрать</div>
                     <?}?>
-                        <div class="CitySelect"></div>
-                <?} else {
-                    $country = \App\Country::all();?>
-                    <?dd($country)?>
+                        <div class="CitySelect HeaderSelectBox"></div>
+                <?} else {?>
+                    <div class="CountryID left">Выбрать</div>
                 <? }?>
+                <?$country = \App\Country::pluck('id', 'name');?>
+                <div class="CountrySelect HeaderSelectBox">
+                    <?foreach($country as $name=>$id){?>
+                    <div class="CountrySelectItem HeaderSelectItem" data-id="<?=$id;?>"><?=$name;?></div>
+                    <?}?>
+                </div>
 
 
             </div>

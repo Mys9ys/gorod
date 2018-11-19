@@ -100,20 +100,20 @@ button {
   display: inline-block;
   cursor: pointer;
 }
-.CitySelect {
+.HeaderSelectBox {
   display: none;
   position: absolute;
-  top: 0px;
+  top: 50px;
   left: 0px;
   background: #ffffff;
   padding: 3px;
   border: 1px solid gray;
   border-radius: 5px;
 }
-.CitySelect .CitySelectItem {
+.HeaderSelectBox .HeaderSelectItem {
   cursor: pointer;
 }
-.CitySelect .CitySelectItem:hover {
+.HeaderSelectBox .HeaderSelectItem:hover {
   color: #9cc218;
 }
 .add_btn {

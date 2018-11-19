@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Ajax;
 
+use App\City;
+use App\Country;
 use App\Human;
 use App\Human_skills;
 use App\Transactions;
@@ -23,5 +25,11 @@ class Reset extends Controller
         $res->truncate();
         $res = new Transactions();
         $res->truncate();
+        $res = new Country();
+        $res->truncate();
+        $res = new City();
+        $res->truncate();
+        $_COOKIE('CountryID','');
+        $_COOKIE('CityID','');
     }
 }
