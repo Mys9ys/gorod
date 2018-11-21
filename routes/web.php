@@ -36,6 +36,7 @@ Route::post('/companyLibDelete', 'Ajax\companyLib@delete'); // установк�
 Route::post('/paysOTO', 'Ajax\Pays@PayOneToOne'); // платежи аякс
 Route::post('/paysMTO', 'Ajax\Pays@PayManyToOne'); // платежи аякс
 Route::post('/paysOTM', 'Ajax\Pays@PayOneToMany'); // платежи аякс
+Route::post('/addMoneyTreasury', 'Ajax\Pays@addMoneyTreasury'); // платежи аякс
 
 Route::post('/getHumanCountry', 'Ajax\getHumanCountry@request'); // выбрать всех жителей страны
 Route::post('/getCityCountry', 'Ajax\getCityCountry@request'); // выбрать всех жителей страны

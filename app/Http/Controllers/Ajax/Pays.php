@@ -71,6 +71,13 @@ class Pays extends Controller
             }
         }
     }
+    public function addMoneyTreasury(Request $request){
+        $treasury = partnerPay($request->buyer, $request->buyerID);
+        $treasury->money +=$request->money;
+        if($treasury->save()){
+            echo 'казна пополнена';
+        }
+    }
 }
 
 // выбор контор агента

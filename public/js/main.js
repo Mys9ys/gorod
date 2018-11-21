@@ -45,6 +45,24 @@ $(document).ready(function () {
         location.reload();
     });
 
+    // добавляем деньги в казну
+    $('.addMoneyTreasury').on('click', function () {
+        var data = {
+            buyer: 'Treasury',
+            buyerID: $('.CountryID').attr('data'),
+            money: 400,
+        };
+        console.log('mi tyt', data);
+        $.post({
+            url: '/addMoneyTreasury',
+            data:data,
+            success: function(result){
+                console.log('result', result);
+                // location.reload();
+            }
+        });
+    });
+
     $('.gosZP').click(function(){
         var data = {
             employer: {
