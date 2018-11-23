@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Ajax;
 
 use App\City;
+use App\Company;
 use App\Country;
 use App\Human;
 use App\Human_skills;
 use App\Transactions;
+use App\Treasury;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Calendar;
@@ -29,7 +31,11 @@ class Reset extends Controller
         $res->truncate();
         $res = new City();
         $res->truncate();
-        $_COOKIE('CountryID','');
-        $_COOKIE('CityID','');
+        $res = new Company();
+        $res->truncate();
+        $res = new Treasury();
+        $res->truncate();
+        setcookie('CountryID','');
+        setcookie('CityID','');
     }
 }
