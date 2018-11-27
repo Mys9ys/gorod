@@ -2,6 +2,7 @@ $(document).ready(function () {
 
     // заложить страну
     $('.create_country').click(function () {
+        console.log('zm9k');
         $('#myModal').find('.modal-header').html('<span>Основать государство</span>');
         $('#myModal').find('.modal-body').html('' +
             '<div class="form-wrap">'+

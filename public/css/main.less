@@ -5,7 +5,28 @@ fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, 
 
 .menu_container{
   display: none;
+  a{
+    display: inline-block;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-left: 1px solid grb(40,40,40);
+  }
 }
+.navbar{
+  margin-bottom: 0px;
+}
+.stndrt_bnt{
+  display: inline-block;
+  padding: 5px 10px;
+  border: 1px solid grey;
+  border-radius: 10px;
+  cursor: pointer;
+  &:hover{
+    border: 1px solid rgb(40,40,40);
+    box-shadow: 0 2px 8px 0 rgba(40,40,40,.3);
+  }
+}
+
 .left{
   display: inline-block;
   float: left;

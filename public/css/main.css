@@ -75,6 +75,26 @@ button {
 .menu_container {
   display: none;
 }
+.menu_container a {
+  display: inline-block;
+  text-decoration: none;
+  padding: 5px 10px;
+  border-left: 1px solid grb(40, 40, 40);
+}
+.navbar {
+  margin-bottom: 0px;
+}
+.stndrt_bnt {
+  display: inline-block;
+  padding: 5px 10px;
+  border: 1px solid grey;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.stndrt_bnt:hover {
+  border: 1px solid #282828;
+  box-shadow: 0 2px 8px 0 rgba(40, 40, 40, 0.3);
+}
 .left {
   display: inline-block;
   float: left;

@@ -42,9 +42,7 @@ $(document).ready(function () {
     $('#myModal').on('click', '.add_human', function () {
         console.log('data', data);
         if(data[0]){
-            $.post('/addHuman',{
-                data: data
-            }, function (data) {
+            $.post('/addHuman', data, function (data) {
                 $('#myModal').find('.modal-body').html('<span class="alert alert-success">Население увеличено</span>');
                 $('#myModal').find('.modal-footer').html('');
             }, "json");

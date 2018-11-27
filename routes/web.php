@@ -17,11 +17,13 @@ Route::get('/', function () {
 
 Auth::routes();
 
-
+// страницы
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/main', 'MainController@index')->name('main');
 Route::get('/setting', 'SettingController@index')->name('setting');
-Route::get('/map', 'MapController@index')->name('map');
+Route::get('/country', 'PageCountryCntrlr@index')->name('country');
+Route::get('/company', 'PageCompanyCntrlr@index')->name('company');
+Route::get('/human', 'PageHumanCntrlr@index')->name('human');
+Route::get('/map', 'PageMapCntrlr@index')->name('map');
 
 //Route::post('/ajaxRequest', 'Ajax\AjaxController@send');
 
@@ -33,10 +35,11 @@ Route::post('/companyLibSet', 'Ajax\companyLib@set'); // установка ко
 Route::post('/companyLibUpdate', 'Ajax\companyLib@update'); // установка компании в библиотеку
 Route::post('/companyLibDelete', 'Ajax\companyLib@delete'); // установка компании в библиотеку
 
-Route::post('/paysOTO', 'Ajax\Pays@PayOneToOne'); // платежи аякс
-Route::post('/paysMTO', 'Ajax\Pays@PayManyToOne'); // платежи аякс
-Route::post('/paysOTM', 'Ajax\Pays@PayOneToMany'); // платежи аякс
-Route::post('/addMoneyTreasury', 'Ajax\Pays@addMoneyTreasury'); // платежи аякс
+// платежи аякс
+Route::post('/paysOTO', 'Ajax\Pays@PayOneToOne'); // один-один
+Route::post('/paysMTO', 'Ajax\Pays@PayManyToOne'); // много одному
+Route::post('/paysOTM', 'Ajax\Pays@PayOneToMany'); // один многим
+Route::post('/addMoneyTreasury', 'Ajax\Pays@addMoneyTreasury'); // казна
 
 Route::post('/getHumanCountry', 'Ajax\getHumanCountry@request'); // выбрать всех жителей страны
 Route::post('/getCityCountry', 'Ajax\getCityCountry@request'); // выбрать всех жителей страны

@@ -7,7 +7,7 @@
     <span class="hidden-title">Добавить компанию</span>
 </div>
 <?$arCompanies = \App\Company::all()?>
-<?//dd()?>
+<?//dd($arCompanies)?>
 <div class="container">
     <?foreach($arCompanies as $arCompany){?>
     <div class="company_box">
@@ -40,22 +40,22 @@
         </div>
     </div>
     <?}?>
-    <div class="select_box">
-        <div class="select_panel">
-            <div class="select_close">+</div>
-        </div>
-        <?$arSelect = \App\Human::where('job', 0)->get();?>
-        <div class="select_container">
-            <?foreach($arSelect as $item){?>
-            <div class="item_wrap">
-                <div class="item_name left"><?=$item->name?></div>
-                <div class="item_condition left">condition</div>
-                <div class="select_box_add_button left" data-itemID="<?=$item->id?>">+</div>
-                <div class="clr"></div>
-            </div>
-            <?}?>
-        </div>
-    </div>
+    {{--<div class="select_box">--}}
+        {{--<div class="select_panel">--}}
+            {{--<div class="select_close">+</div>--}}
+        {{--</div>--}}
+        {{--<?$arSelect = \App\Human::where('job', 0)->get();?>--}}
+        {{--<div class="select_container">--}}
+            {{--<?foreach($arSelect as $item){?>--}}
+            {{--<div class="item_wrap">--}}
+                {{--<div class="item_name left"><?=$item->name?></div>--}}
+                {{--<div class="item_condition left">condition</div>--}}
+                {{--<div class="select_box_add_button left" data-itemID="<?=$item->id?>">+</div>--}}
+                {{--<div class="clr"></div>--}}
+            {{--</div>--}}
+            {{--<?}?>--}}
+        {{--</div>--}}
+    {{--</div>--}}
 </div>
 
 <script src="{{ URL::asset('public/block/company/script.js') }}"></script>

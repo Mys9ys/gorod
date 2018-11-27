@@ -17,21 +17,19 @@ class addHuman extends Controller
 //        $letter2 = ['А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ж', 'З', 'И', 'Й', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Р', 'С', 'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Ы', 'Э', 'Ю', 'Я'];
 //        $letter3 = ['А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ж', 'З', 'И', 'Й', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Р', 'С', 'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Ы', 'Э', 'Ю', 'Я'];
 
-        foreach ($request->all() as $arHumans){
-            $country = Country::find($_COOKIE['CountryID']);
-            $country->population=count($arHumans);
-            $country->save();
-            foreach ($arHumans as $human){
-                $res = new Human();
-                $res->name=$human['name'];
-                $res->born_city=$human['city'];
-                $res->born_country=$human['country'];
-                $res->born_date=Calendar::pluck('countDay')->first();
-                $res->save();
-                $skill = new Human_skills();
-                $skill->skill=0;
-                $skill->save();
-            }
+        $country = Country::find($_COOKIE['CountryID']);
+        $country->population=count($request->all());
+        $country->save();
+        foreach ($request->all() as $human){
+            $res = new Human();
+            $res->name=$human['name'];
+            $res->born_city=$human['city'];
+            $res->born_country=$human['country'];
+            $res->born_date=Calendar::pluck('countDay')->first();
+            $res->save();
+            $skill = new Human_skills();
+            $skill->skill=0;
+            $skill->save();
         }
         return json_encode('yra');
     }

@@ -1,9 +1,20 @@
-@extends('layouts.app')
+@include('layouts.header')
+
+@include('block.main_menu')
 
 @section('content')
 
 
+
 <div class="container">
+    <h3>Меню</h3>
+    <div class="gameMenuButton">
+        <a class="gameSettings stndrt_bnt" href="/setting">
+            Настройки
+        </a>
+        <div class="addHuman stndrt_bnt">Добавить человечков</div>
+        <div class="reset stndrt_bnt">Reset</div>
+    </div>
     <?$tabNumber=1;?>
     <ul class="nav nav-tabs">
         <li class="active"><a data-toggle="tab" href="#panel<?=$tabNumber++;?>">Компании</a></li>
@@ -46,4 +57,4 @@
     <div class="productCatBox"></div>
 </div>
 
-@endsection
+@include('layouts.footer')

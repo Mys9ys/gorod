@@ -5,6 +5,35 @@ $(document).ready(function () {
         }
     });
 
+    $('.startGame').on('click', function () {
+        // генерация стран
+        var setCountry = {
+            country_name: generateName('country'),
+            city_name:generateName('city')
+        };
+        $.post( '/setCountry', setCountry, function (result) {});
+        $.cookie('CountryID', 1, {expires: 365, path: '/'});
+        $.cookie('CityID', 1 ,{expires: 365, path: '/'});
+
+        // генерация человечков
+        var arHuman = {}; item={};
+        for(var i=0;i<20;i++) {
+            var item = {
+                name: generateName('human'),
+                city: $.cookie('CityID'),
+                country: $.cookie('CountryID')
+            };
+            arHuman[i] = item;
+        }
+        console.log('arHuman', arHuman);
+        $.post('/addHuman', arHuman, function (data) {});
+
+
+
+        location.reload();
+    });
+    
+    
     //выбор страны
     $('.CountryID').on('click', function () {
         $('.CountrySelect').css('left', $('.country_icon').offset().left);
@@ -81,7 +110,7 @@ $(document).ready(function () {
         $.post({
             url: '/reset',
             success: function(result){
-                location.reload();
+                location.href ='/';
             }
         });
     });

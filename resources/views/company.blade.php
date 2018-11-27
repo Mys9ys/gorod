@@ -2,7 +2,7 @@
 
 @include('block.main_menu')
 <div class="container">
-    <button class="startGame stndrt_bnt">Начать</button>
+    @include('block.company')
 </div>
 
 @include('layouts.footer')
