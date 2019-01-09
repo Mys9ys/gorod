@@ -8,7 +8,9 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Gorod</title>
+    {{--<title>Gorod</title>--}}
+    <?if(empty($title)) $title = 'Город';?>
+    <title>{{ $title }}</title>
 
     <!-- Styles -->
     <link href="{{ asset('public/css/app.css') }}" rel="stylesheet">

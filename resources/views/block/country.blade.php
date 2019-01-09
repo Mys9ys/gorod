@@ -19,7 +19,8 @@
     <div class="country_title">
         Информация о стране <?=$country->name;?>
     </div>
-    <p class="country_info_item"><span >Казна: </span><?=$treasury->money;?> <div class="country_btn addMoneyTreasury">Выпустить деньги</div></p>
+    <p class="country_info_item"><span>Казна: </span><?=$treasury->money;?> <div class="country_btn addMoneyTreasury">Выпустить деньги</div></p>
+    <p class="country_info_item"><span>Выдать пособие: </span><?=20;?> <div class="country_btn gosZP" data-country="<?=$_COOKIE['CountryID']?>">Выдать</div></p>
     <p class="country_info_item"><span>Население: </span><?=$country->population;?></p>
     <p class="country_info_item"><span>Безработные: </span><?=count($jobless)?></p></p>
 <?} else {?>

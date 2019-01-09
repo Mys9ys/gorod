@@ -2,7 +2,10 @@
 
 @include('block.main_menu')
 <div class="container">
-    <button class="startGame stndrt_bnt">Начать</button>
+    <?$country = \App\Country::all();?>
+    <?if(count($country)<=0){?>
+        <button class="startGame stndrt_bnt">Начать</button>
+    <?}?>
 </div>
 
 @include('layouts.footer')

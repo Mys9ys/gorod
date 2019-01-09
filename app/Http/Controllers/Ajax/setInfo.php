@@ -19,7 +19,8 @@ class setInfo extends Controller
        $city->country = $country->id;
        $city->save();
        $treasury = new Treasury();
-       $treasury->country= $city->id;
+       $treasury->country= $country->id;
+       $treasury->money= $request->treasury_money;
        $treasury->save();
 
         return json_encode($city->id);

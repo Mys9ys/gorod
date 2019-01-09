@@ -44,7 +44,9 @@ $(document).ready(function () {
     $('#myModal').on('click', '.add_company', function () {
         var flag = true;
        // var count = $('.modal-body').find('*[data-form=""]').val();
-        var data = {};
+        var data = {
+            city: $.cookie('CityID')
+        };
         $('.modal-body').find('*[data-form]').each(function () {
             if($(this).val()!=''){
                 data[$(this).data('form')]=$(this).val();

@@ -9,6 +9,7 @@ class PageHumanCntrlr extends Controller
     public function index()
     {
         return view('human', array(
+            'title' => 'Население'
 //            'companyTemplate' => $companyTemplate,
 //            'humans' => $humans
         ));

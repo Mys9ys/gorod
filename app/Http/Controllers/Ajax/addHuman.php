@@ -18,7 +18,7 @@ class addHuman extends Controller
 //        $letter3 = ['А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ж', 'З', 'И', 'Й', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Р', 'С', 'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Ы', 'Э', 'Ю', 'Я'];
 
         $country = Country::find($_COOKIE['CountryID']);
-        $country->population=count($request->all());
+        $country->population+=count($request->all());
         $country->save();
         foreach ($request->all() as $human){
             $res = new Human();

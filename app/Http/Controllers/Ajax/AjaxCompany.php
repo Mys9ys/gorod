@@ -28,6 +28,7 @@ class AjaxCompany extends Controller
             $company->$key=$item;
         }
         $company->create_date=Calendar::pluck('countDay')->first();
+        $company->city=$_COOKIE['CityID'];
         $company->save();
 //       Выбираем безработных и заполняем ими свободные рабочие места
         $worker = Human::where('job', '=', 0)->take($request['workplace'])->pluck('id');

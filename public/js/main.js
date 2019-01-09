@@ -4,33 +4,50 @@ $(document).ready(function () {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    });
 
     $('.startGame').on('click', function () {
+        loader_pic();
         // генерация стран
         var setCountry = {
-            country_name: generateName('country'),
-            city_name:generateName('city')
+            country_name:generateName('country'),
+            city_name:generateName('city'),
+            treasury_money:400
         };
-        $.post( '/setCountry', setCountry, function (result) {});
-        $.cookie('CountryID', 1, {expires: 365, path: '/'});
-        $.cookie('CityID', 1 ,{expires: 365, path: '/'});
+        // создание страны и города
+        $.post( '/setCountry', setCountry, function (result) {
+            $.cookie('CountryID', 1, {expires: 365, path: '/'});
+            $.cookie('CityID', 1 ,{expires: 365, path: '/'});
+            // генерация человечков
+            var arHuman = {}; item={};
+            for(var i=0;i<20;i++) {
+                var item = {
+                    name: generateName('human'),
+                    city: 1,
+                    country: 1
+                };
+                arHuman[i] = item;
+            }
+            $.post('/addHuman', arHuman, function (data) {
+                // выплата подъемных
+                var data = {
+                    employer: {
+                        buyer: 'Treasury',
+                        buyerID: 1
+                    },
+                    money: 20,
+                    target: 'jobless'
+                };
+                console.log('data', data);
+                if(payday(data) == true){
+                    location.href ='/';
+                };
+            });
+        });
 
-        // генерация человечков
-        var arHuman = {}; item={};
-        for(var i=0;i<20;i++) {
-            var item = {
-                name: generateName('human'),
-                city: $.cookie('CityID'),
-                country: $.cookie('CountryID')
-            };
-            arHuman[i] = item;
-        }
-        console.log('arHuman', arHuman);
-        $.post('/addHuman', arHuman, function (data) {});
 
-
-
-        location.reload();
     });
     
     
@@ -76,6 +93,7 @@ $(document).ready(function () {
 
     // добавляем деньги в казну
     $('.addMoneyTreasury').on('click', function () {
+        loader_pic();
         var data = {
             buyer: 'Treasury',
             buyerID: $('.CountryID').attr('data'),
@@ -86,13 +104,13 @@ $(document).ready(function () {
             url: '/addMoneyTreasury',
             data:data,
             success: function(result){
-                console.log('result', result);
-                // location.reload();
+                location.reload();
             }
         });
     });
 
     $('.gosZP').click(function(){
+        loader_pic();
         var data = {
             employer: {
                 buyer: 'Treasury',
@@ -102,11 +120,12 @@ $(document).ready(function () {
             target: 'jobless'
         };
         payday(data);
-        console.log('mi tyt', data);
+        location.reload();
     });
 
     // сброс базы на 0
     $('.reset').click(function () {
+        loader_pic();
         $.post({
             url: '/reset',
             success: function(result){
@@ -258,6 +277,11 @@ function paymentFunc(seller, sellerID, buyer, buyerID, money) {
     }
 }
 
+function loader_pic() {
+    $('#myModal').find('.modal-body').html('<i class="fa fa-spinner fa-spin fa-3x" aria-hidden="true"></i>');
+    $('#myModal').modal('show');
+}
+
 //выплата зарплаты(пособия)
 function payday(arrPay) {
     console.log('arrPay', arrPay);
@@ -280,5 +304,6 @@ function payday(arrPay) {
             paymentFunc('Human', JSON.parse(result), arrPay['employer']['buyer'],arrPay['employer']['buyerID'], arrPay['money']);
         }
     });
+    return true;
 }
 
