@@ -48,4 +48,7 @@ class AjaxCompany extends Controller
         $company->workers = $workers;
         if ($company->save()) {return json_encode('запись удалась');}
     }
+    public function addNewWorker(Request $request) {
+
+    }
 }

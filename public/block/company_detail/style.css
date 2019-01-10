@@ -1,0 +1,41 @@
+.company_worker {
+  display: inline-block;
+  width: 100%;
+}
+.company_worker .company_worker_title {
+  width: 100%;
+}
+.company_worker .fa-user {
+  display: inline-block;
+  font-size: 28px;
+  color: #2e6da4;
+  margin-right: 8px;
+}
+.company_worker .fa-user-o {
+  display: inline-block;
+  font-size: 27px;
+  color: #2e6da4;
+  margin-right: 8px;
+}
+.company_worker .add_worker_btn {
+  display: inline-block;
+  font-size: 20px;
+  padding: 0px 5px 2px 5px;
+  line-height: 23px;
+  color: #3c763d;
+  font-weight: bold;
+  border: 2px solid #3c763d;
+  border-radius: 15px;
+}
+.company_worker .add_worker {
+  cursor: pointer;
+}
+.company_info .company_pays {
+  display: inline-block;
+  width: 50%;
+}
+.company_info .company_pays .money_block {
+  display: inline-block;
+  float: left;
+  width: 25%;
+}

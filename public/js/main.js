@@ -236,13 +236,14 @@ function slog() {
 }
 
 // платежи с запросом через аякс
-function paymentFunc(seller, sellerID, buyer, buyerID, money) {
+function paymentFunc(seller, sellerID, buyer, buyerID, money, target) {
     var data = {
         seller:seller,
         sellerID:sellerID,
         buyer:buyer,
         buyerID:buyerID,
-        money:money
+        money:money,
+        target:target
     };
 
 
@@ -286,6 +287,7 @@ function loader_pic() {
 function payday(arrPay) {
     console.log('arrPay', arrPay);
     if(arrPay['target'] == 'jobless'){
+        var target = 'пособие';
         var data = {
             props1:{
                 name:'job',
@@ -301,7 +303,7 @@ function payday(arrPay) {
         url: '/getHumanCountry',
         data:data,
         success: function(result){
-            paymentFunc('Human', JSON.parse(result), arrPay['employer']['buyer'],arrPay['employer']['buyerID'], arrPay['money']);
+            paymentFunc('Human', JSON.parse(result), arrPay['employer']['buyer'],arrPay['employer']['buyerID'], arrPay['money'], target);
         }
     });
     return true;

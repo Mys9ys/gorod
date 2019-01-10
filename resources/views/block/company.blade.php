@@ -1,6 +1,4 @@
 <link href="{{ URL::asset('public/block/company/style.css') }}" rel="stylesheet" type="text/css">
-<?php $title = 'Тут тайтл'; ?>
-@section('title', $title)
 {{--@include('view.name', ['title' => $title])--}}
 <div class="generate_company add_btn">
     <span class="fa-stack">
@@ -17,7 +15,8 @@
     <??>
     <?foreach($arCompanies as $arCompany){?>
     <div class="company_box">
-        <div class="select_wrap"></div>
+        <a class="info_btn" href="{{ route('company_detail', ['id' => $arCompany->id]) }}"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+        {{--<a href="{{ action('PageCompanyDetail@index',['id' => $arCompany->id]) }}"><i class="fa fa-info-circle" aria-hidden="true"></i></a>--}}
         <div class="company_name"><?=$arCompany->name?></div>
         <div class="company_info">
             <div class="company_money">

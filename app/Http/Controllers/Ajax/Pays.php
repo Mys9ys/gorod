@@ -25,6 +25,9 @@ class Pays extends Controller
                 $transaction->buyer=$request->buyerID;
                 $transaction->pay_data=Calendar::pluck('countDay')->first();
                 $transaction->count=$request->money;
+                if(!empty($request->target)) {$transaction->target=$request->target;} else {
+                    $transaction->target = 'Pay ' . $request->buyer .' to ' . $request->seller;
+                }
                 if($transaction->save()){
 
                 }  else {
@@ -50,6 +53,9 @@ class Pays extends Controller
                 $transaction->buyer=$buyerID;
                 $transaction->pay_data=Calendar::pluck('countDay')->first();
                 $transaction->count=$request->money;
+                if(!empty($request->target)) {$transaction->target=$request->target;} else {
+                    $transaction->target = 'Pay ' . $request->buyer .' to ' . $request->seller;
+                }
                 $transaction->save();
             }
         }
@@ -67,6 +73,9 @@ class Pays extends Controller
                 $transaction->buyer=$request->buyerID;
                 $transaction->pay_data=Calendar::pluck('countDay')->first();
                 $transaction->count=$request->money;
+                if(!empty($request->target)) {$transaction->target=$request->target;} else {
+                    $transaction->target = 'Pay ' . $request->buyer .' to ' . $request->seller;
+                }
                 $transaction->save();
             }
         }
@@ -75,6 +84,13 @@ class Pays extends Controller
         $treasury = partnerPay($request->buyer, $request->buyerID);
         $treasury->money +=$request->money;
         if($treasury->save()){
+            $transaction = new Transactions();
+            $transaction->seller=0;
+            $transaction->buyer=$request->buyerID;
+            $transaction->pay_data=Calendar::pluck('countDay')->first();
+            $transaction->count=$request->money;
+            $transaction->target='денежная эмиссия';
+            $transaction->save();
             echo 'казна пополнена';
         }
     }

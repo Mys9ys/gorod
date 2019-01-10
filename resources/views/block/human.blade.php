@@ -11,6 +11,7 @@
 <div class="container">
     <?foreach($arHumans as $arHuman){?>
         <div class="human_box">
+            <a class="info_btn" href="{{ route('human_detail', ['id' => $arHuman->id]) }}"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
             <div class="human_name"><?=$arHuman->name?></div>
             <div class="human_info">
                 <div class="human_money">

@@ -7,6 +7,7 @@
   border-radius: 3px;
 }
 .human_box {
+  position: relative;
   display: inline-block;
   border: 1px solid #2e6da4;
   border-radius: 3px;
@@ -15,6 +16,11 @@
   line-height: 12px;
   margin: 3px;
   box-shadow: 0px 2px 8px 0px #2e6da4;
+}
+.human_box .info_btn {
+  position: absolute;
+  top: -2px;
+  right: -2px;
 }
 .human_box .human_name {
   display: inline-block;

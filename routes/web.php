@@ -22,6 +22,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/setting', 'SettingController@index')->name('setting');
 Route::get('/country', 'PageCountryCntrlr@index')->name('country');
 Route::get('/company', 'PageCompanyCntrlr@index')->name('company');
+Route::get('/company_detail', 'PageCompanyDetail@index')->name('company_detail');
+Route::get('/human_detail', 'PageHumanDetail@index')->name('human_detail');
 Route::get('/human', 'PageHumanCntrlr@index')->name('human');
 Route::get('/map', 'PageMapCntrlr@index')->name('map');
 
