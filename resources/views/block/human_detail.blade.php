@@ -3,7 +3,10 @@
 <?$arHuman = \App\Human::find($_GET['id'])?>
 <div class="human_title"><?=$title?></div>
 <div class="human_info">
-
+    <div class="human_job">
+        <div class="block_title">Работа:</div>
+        <div class="block_count"><?=\App\Company::find($arHuman->job)['name']?></div>
+    </div>
 </div>
 <div class="human_pays">
     <div class="human_money money_block">
