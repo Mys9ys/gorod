@@ -21,6 +21,7 @@ class setInfo extends Controller
        $treasury = new Treasury();
        $treasury->country= $country->id;
        $treasury->money= $request->treasury_money;
+       $treasury->mrot= 20;
        $treasury->save();
 
         return json_encode($city->id);

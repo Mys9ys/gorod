@@ -23,7 +23,7 @@
 
     <?$panelNumber=1;?>
     <div class="tab-content">
-        <div id="panel<?=$panelNumber++;?>" class="tab-pane fade in active">
+        <div id="panel<?=$panelNumber++;?>" class="tab-pane fade ">
             <h3>Шаблоны компаний</h3>
             <div class="companyLibRow">
                 <div class="companyLibName badge">Название</div>
@@ -44,17 +44,14 @@
                 <div class="setCompanyLib">Сохранить</div>
             </div>
         </div>
-        <div id="panel<?=$panelNumber++;?>" class="tab-pane fade">
+        <div id="panel<?=$panelNumber++;?>" class="tab-pane fade in active">
             <h3>Шаблоны продуктов</h3>
+            <div class="container">
+                @include('block.product_setting')
+            </div>
         </div>
     </div>
 </div>
 
-    <div class="container">
-    <button class="companyLibrary">Шаблоны компаний</button>
-    <div class="companyLibBox"></div>
-    <button class="productCatalog">Каталог продукции</button>
-    <div class="productCatBox"></div>
-</div>
 
 @include('layouts.footer')
