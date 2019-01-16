@@ -59,12 +59,12 @@
                 <? }?>
                 <?$country = \App\Country::pluck('id', 'name');?>
                 <div class="CountrySelect HeaderSelectBox">
-                    <?foreach($country as $name=>$id){?>
-                    <div class="CountrySelectItem HeaderSelectItem" data-id="<?=$id;?>"><?=$name;?></div>
+                    <?if(!empty($country)){?>
+                        <?foreach($country as $name=>$id){?>
+                            <div class="CountrySelectItem HeaderSelectItem" data-id="<?=$id;?>"><?=$name;?></div>
+                        <?}?>
                     <?}?>
                 </div>
-
-
             </div>
         </div>
 
