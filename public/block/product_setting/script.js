@@ -1,6 +1,8 @@
 $(document).ready(function () {
     $('.product_add_confirm').on('click', function () {
-        console.log(' mi ytt');
+        $.each($(this).parent().find('.product_input'), function (key, value) {
+           console.log('key', key, 'value', value, 'data-name', $(value).data('name'), 'couunt', $(value).val());
+        });
     });
     $('.product_input').on('change', function(){
         switch ($(this).data('name')){
@@ -46,5 +48,4 @@ function calculateTotalPrice(selector) {
 
     console.log('sum5', sum);
     $(selector).find('.product_total').val(sum.toFixed(2));
-
 }
