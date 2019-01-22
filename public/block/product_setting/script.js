@@ -1,7 +1,16 @@
 $(document).ready(function () {
     $('.product_add_confirm').on('click', function () {
+        var data ={};
         $.each($(this).parent().find('.product_input'), function (key, value) {
            console.log('key', key, 'value', value, 'data-name', $(value).data('name'), 'couunt', $(value).val());
+           if($(value).data('name')) data[$(value).data('name')]=$(value).val();
+        });
+        console.log('data', data); $.post({
+            url: '/addProduct',
+            data:data,
+            success: function(result){
+                console.log('result')
+            }
         });
     });
     $('.product_input').on('change', function(){

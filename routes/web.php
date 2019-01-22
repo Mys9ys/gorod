@@ -36,6 +36,7 @@ Route::post('/companyLibGet', 'Ajax\companyLib@get'); // получение сп
 Route::post('/companyLibSet', 'Ajax\companyLib@set'); // установка компании в библиотеку
 Route::post('/companyLibUpdate', 'Ajax\companyLib@update'); // установка компании в библиотеку
 Route::post('/companyLibDelete', 'Ajax\companyLib@delete'); // установка компании в библиотеку
+Route::post('/addProduct', 'Ajax\Product@ProductAdd'); // добавляем продукт
 
 // платежи аякс
 Route::post('/paysOTO', 'Ajax\Pays@PayOneToOne'); // один-один
