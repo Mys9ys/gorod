@@ -11,7 +11,7 @@
       width: 120px;
     }
     .product_sector{
-      width: 80px;
+      width: 100px;
     }
     .product_detail{
       display: inline-block;
@@ -19,6 +19,77 @@
     .product_add_confirm{
       display: inline-block;
       cursor: pointer;
+    }
+  }
+}
+
+.add_btn_product{
+  display: inline-block;
+  cursor: pointer;
+  border: 1px solid rgb(41,41,41);
+  border-radius: 5px;
+  padding: 0px 5px;
+}
+.select_product_block{
+  position: absolute;
+  display: none;
+}
+#addProductModal{
+  .search_input{
+    border-bottom: 1px solid rgb(41,41,41);
+    border-radius: 5px;
+    width: 150px;
+    padding: 0px 5px;
+    font-size: 11px;
+    margin-bottom: 5px;
+  }
+  .product_formula{
+    height: 25px;
+    border-bottom: 1px solid rgb(41,41,41);
+    border-radius: 5px;
+    margin-bottom: 7px;
+  }
+  .product_select_box{
+    display: inline-block;
+    width: 49%;
+    margin-right: 1%;
+    float: left;
+    border-right: 2px solid rgb(41,41,41);
+    border-radius: 5px;
+    .select_item{
+      display: inline-block;
+      border: 1px solid rgb(41,41,41);
+      border-radius: 5px;
+      width: 35px;
+      height: 35px;
+      margin: 2px;
+      font-size: 11px;
+      &:hover{
+        box-shadow: 0px 0px 15px rgb(41,41,41);
+        cursor: pointer;
+      }
+    }
+  }
+  .product_calculate{
+    display: inline-block;
+    width: 49%;
+    margin-left: 1%;
+    float: right;
+    border-left: 2px solid rgb(41,41,41);
+    border-radius: 5px;
+    .calculate_value{
+      display: inline-block;
+      border: 1px solid rgb(41,41,41);
+      border-radius: 5px;
+      width: 35px;
+      height: 35px;
+      margin: 2px;
+      text-align: center;
+      line-height: 35px;
+      &:hover{
+        box-shadow: 0px 0px 15px rgb(41,41,41);
+        cursor: pointer;
+      }
     }
   }
 }

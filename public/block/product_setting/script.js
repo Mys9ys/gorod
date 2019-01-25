@@ -27,6 +27,9 @@ $(document).ready(function () {
             default: console.log('error');
         }
     });
+    $('.add_btn_product').on('click', function(){
+        $('#addProductModal').modal('show');
+    });
 });
 
 function calculateTotalPrice(selector) {
