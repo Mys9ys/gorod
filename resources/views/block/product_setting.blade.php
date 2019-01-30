@@ -19,7 +19,7 @@
         </select>
         <input class="product_make_in_day product_input" data-mrot="<?=$arTreasure['mrot']?>" type="text" data-name="make_in_day" title="Выработка в день">
         <input class="product_FOT product_input" type="text" disabled title="MROT: <?=$arTreasure['mrot']?>" data-name="FOT" >
-        <?if(!empty($arProduct)){selectProductBlock('formula');}?>
+        <?if(!empty($arProduct)){selectProductBlock('formula', 'Сырье');}?>
         <input class="product_count_detail_material product_input" type="hidden">
         <input class="product_amortization product_input" type="text" data-name="amortization" title="амортизация">
         <input class="product_pack product_input" type="text" data-name="pack" title="тара">
@@ -32,7 +32,7 @@
     </div>
 </div>
 <?
-function selectProductBlock($selector){?>
+function selectProductBlock($selector, $name){?>
     <div class="add_<?=$selector?> add_btn_product" id="add_<?=$selector?>">+</div>
 <div id="addProductModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -40,22 +40,30 @@ function selectProductBlock($selector){?>
         <div class="modal-content">
             <button type="button" class="close" data-dismiss="modal" style="float:right;padding:5px 10px 0 0;z-index:1;position:relative;">&times;</button>
             <div class="modal-header">
-                <h4 class="modal-title"><?=$selector?></h4>
+                <h4 class="modal-title"><?=$name?></h4>
             </div>
             <div class="modal-body">
-                <input type="search" class="search_input">
+                <input type="search" class="search_input"><i class="fa fa-search"></i>
                 <div class="product_formula"></div>
+                <div class="product_formula_summ"></div>
+                <input class="product_formula_bd" type="hidden">
                 <div class="product_select_box">
-                    <div class="select_item">
-                        <div class="select_item_title">вода</div>
-                        <div class="select_item_price">0,05</div>
-                    </div>
+                    <?$arProdTest = array(
+                        array('name' => 'Вода', 'price' => '0.05'),
+                        array('name' => 'Глина', 'price' => '0.09')
+                    )?>
+                    <?foreach ($arProdTest as $key => $prod){?>
+                        <div class="select_item" data-id="<?=$key?>">
+                            <div class="select_item_title name"><?=$prod['name']?></div>
+                            <div class="select_item_price price"><?=$prod['price']?></div>
+                        </div>
+                    <?}?>
                 </div>
+                <?$arCalculate = array(0.1,0.2,0.5,1,2,5,10,25,50,100)?>
                 <div class="product_calculate">
-                    <div class="calculate_value">1</div>
-                    <div class="calculate_value">2</div>
-                    <div class="calculate_value">5</div>
-                    <div class="calculate_value">10</div>
+                    <?foreach ($arCalculate as $key=>$value){?>
+                        <div class="calculate_value" data-value="<?=$value?>"><?=$value?></div>
+                    <?}?>
                 </div>
                 <div style="clear:both"></div>
             </div>

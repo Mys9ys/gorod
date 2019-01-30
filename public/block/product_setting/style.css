@@ -38,7 +38,21 @@
   margin-bottom: 5px;
 }
 #addProductModal .product_formula {
+  display: inline-block;
+  width: 83%;
   height: 25px;
+  margin-right: 1%;
+  float: left;
+  border-bottom: 1px solid #292929;
+  border-radius: 5px;
+  margin-bottom: 7px;
+}
+#addProductModal .product_formula_summ {
+  display: inline-block;
+  width: 15%;
+  height: 25px;
+  margin-left: 1%;
+  float: left;
   border-bottom: 1px solid #292929;
   border-radius: 5px;
   margin-bottom: 7px;

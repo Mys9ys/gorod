@@ -30,6 +30,30 @@ $(document).ready(function () {
     $('.add_btn_product').on('click', function(){
         $('#addProductModal').modal('show');
     });
+    //кнопки выбора товаров для вкладок Сырье/тара
+    $('.select_item').on('click', function () {
+        var prod_id = ''; var name = ''; var price = '';
+        prod_id = Number($(this).data('id'));
+        name = $(this).find('.name').text();
+        price = Number($(this).find('.price').text());
+        console.log('data-id', $(this).data('id'), 'name', $(this).find('.name').text(), 'price', $(this).find('.price').text());
+        $('.calculate_value').on('click', function () {
+            var count = Number($(this).text());
+            console.log('mi tyt', price, name);
+            if($('.product_formula').text()){
+                var old_formula = $('.product_formula').text();
+                $('.product_formula').text('');
+                $('.product_formula').text(old_formula+'+'+name+'x'+count);
+                $('.product_formula_summ').text((Number($('.product_formula_summ').text())+price*count).toFixed(2));
+                console.log('mi tyt13', price, name, 'old_formula', old_formula);
+            } else {
+                $('.product_formula').text(name+'x'+count);
+                $('.product_formula_summ').text(price*count.toFixed(2));
+                console.log('mi tyt22', price, name);
+            }
+            prod_id = name = price = '';
+        });
+    });
 });
 
 function calculateTotalPrice(selector) {
