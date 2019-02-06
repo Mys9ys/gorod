@@ -46,12 +46,9 @@
         </div>
         <div id="panel<?=$panelNumber++;?>" class="tab-pane fade in active">
             <h3>Шаблоны продуктов</h3>
-            <div class="container">
                 @include('block.product_setting')
-            </div>
         </div>
     </div>
 </div>
-
 
 @include('layouts.footer')

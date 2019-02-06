@@ -1,5 +1,15 @@
 .product_table{
   .product_row{
+    label{
+      text-align: center;
+      border-left: 1px solid grey;
+      .title_item, input, select{
+        margin-left: 2px;
+      }
+      &:last-of-type{
+        border-right: 1px solid grey;
+      }
+    }
     .product_input{
       border: 1px solid rgb(41,41,41);
       border-radius: 5px;
@@ -43,6 +53,10 @@
     font-size: 11px;
     margin-bottom: 5px;
   }
+  .fa-trash{
+    margin-left: 8px;
+    cursor: pointer;
+  }
   .product_formula{
     display: inline-block;
     width: 83%;
@@ -81,6 +95,9 @@
       &:hover{
         box-shadow: 0px 0px 15px rgb(41,41,41);
         cursor: pointer;
+      }
+      &.selected_item{
+        box-shadow: 0px 0px 15px rgb(0,0,139);
       }
     }
   }

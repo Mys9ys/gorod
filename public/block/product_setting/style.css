@@ -1,3 +1,15 @@
+.product_table .product_row label {
+  text-align: center;
+  border-left: 1px solid grey;
+}
+.product_table .product_row label .title_item,
+.product_table .product_row label input,
+.product_table .product_row label select {
+  margin-left: 2px;
+}
+.product_table .product_row label:last-of-type {
+  border-right: 1px solid grey;
+}
 .product_table .product_row .product_input {
   border: 1px solid #292929;
   border-radius: 5px;
@@ -36,6 +48,10 @@
   padding: 0px 5px;
   font-size: 11px;
   margin-bottom: 5px;
+}
+#addProductModal .fa-trash {
+  margin-left: 8px;
+  cursor: pointer;
 }
 #addProductModal .product_formula {
   display: inline-block;
@@ -77,6 +93,9 @@
 #addProductModal .product_select_box .select_item:hover {
   box-shadow: 0px 0px 15px #292929;
   cursor: pointer;
+}
+#addProductModal .product_select_box .select_item.selected_item {
+  box-shadow: 0px 0px 15px #00008b;
 }
 #addProductModal .product_calculate {
   display: inline-block;
