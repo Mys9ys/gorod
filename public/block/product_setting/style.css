@@ -119,3 +119,11 @@
   box-shadow: 0px 0px 15px #292929;
   cursor: pointer;
 }
+#addProductModal .confirm_add_btn_product {
+  display: inline-block;
+  padding: 4px;
+  background: #9cc218;
+  border-radius: 5px;
+  color: #ffffff;
+  cursor: pointer;
+}

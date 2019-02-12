@@ -34,7 +34,7 @@
         <label for="">
             <div class="title_item">Сырье</div>
             <div class="add_btn_product" id="add_formula" data-selector="formula" data-title="Сырье" data-selector_count="product_count_detail_material">+</div>
-            <input type="hidden" class="product_formula product_input" disabled title="Формула" data-name="formula">
+            <input type="hidden" class="formula product_input" disabled title="Формула" data-name="formula">
         </label>
         <label for="product_count_detail_material">
             <div class="title_item">Сырье $</div>
