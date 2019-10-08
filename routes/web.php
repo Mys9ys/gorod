@@ -25,6 +25,7 @@ Route::get('/company', 'PageCompanyCntrlr@index')->name('company');
 Route::get('/company_detail', 'PageCompanyDetail@index')->name('company_detail');
 Route::get('/human_detail', 'PageHumanDetail@index')->name('human_detail');
 Route::get('/human', 'PageHumanCntrlr@index')->name('human');
+Route::get('/world', 'WorldController@index')->name('world');
 Route::get('/map', 'PageMapCntrlr@index')->name('map');
 
 //Route::post('/ajaxRequest', 'Ajax\AjaxController@send');
