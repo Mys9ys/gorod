@@ -20,5 +20,14 @@ foreach($countrys as $country){
 
     $arCountry[$country['id']] = $arTemp;
 }
-dd($arCountry);
+
 ?>
+<?foreach($arCountry as $key=>$country){?>
+    <div class="country_box">
+        <a class="info_btn" href="{{ route('country', ['id' => $key]) }}"><i class="fa fa-info-circle" aria-hidden="true"></i></a>
+        <div class="country_name"><?=$country['name']?></div>
+        <div class="country_count_city"><?=$country['countcity']?></div>
+        <div class="country_population"><?=$country['population']?></div>
+        <?=$key?>
+    </div>
+<?}?>

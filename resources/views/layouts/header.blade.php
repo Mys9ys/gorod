@@ -90,6 +90,7 @@
     <div class="menu_container">
         <a href="/">Главная</a>
         <a href="{{ route('setting') }}">Настройки</a>
+        <a href="{{ route('world') }}">Весь мир</a>
         <a href="{{ route('country') }}">Государство</a>
         <a href="{{ route('human') }}">Население</a>
         <a href="{{ route('company') }}">Компании</a>
